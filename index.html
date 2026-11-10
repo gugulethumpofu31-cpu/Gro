@@ -168,6 +168,41 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-banga.mood-cheerful .banga-fairy-body{filter:drop-shadow(0 0 12px #fff0ad)}
 @media(max-width:650px){.biome-banga{left:68%;top:25%;transform:scale(.86);transform-origin:top left}.banga-biome-note{width:190px;right:28px;font-size:11px}}
 @media(prefers-reduced-motion:reduce){.biome-banga,.banga-fairy-body,.banga-fairy-wings,.biome-tree,.landmark-glow{animation:none!important}}
+
+/* GRO 1.1 · Banga's larger, more expressive presence */
+.biome-banga{width:190px;height:190px;left:67%;top:19%;animation-duration:10s;z-index:12}
+.banga-fairy-body{left:52px;top:37px;font-size:76px;transform-origin:50% 75%;filter:drop-shadow(0 9px 8px #263c3b88)}
+.banga-fairy-wings{top:40px;font-size:49px;text-shadow:0 0 18px #fff2c7,0 0 30px #f8e9c8}
+.wing-left{left:24px}.wing-right{left:116px}
+.banga-name{top:119px;left:64px;font-size:14px;letter-spacing:.5px}
+.banga-speech{top:9px;right:10px;width:34px;height:34px;font-size:16px;box-shadow:0 0 22px #fff3c8}
+.banga-flight-trail{left:10px;top:89px;width:94px;height:30px;border-top-width:3px}
+.banga-biome-note{top:0;right:46px;width:min(260px,58vw);font-size:13px;padding:14px 16px}
+@keyframes bangaBiomeFlight{0%,100%{transform:translate(0,0) rotate(-5deg)}16%{transform:translate(-24px,-26px) rotate(5deg)}32%{transform:translate(-74px,-9px) rotate(-3deg)}48%{transform:translate(-88px,26px) rotate(6deg)}66%{transform:translate(-38px,43px) rotate(-4deg)}84%{transform:translate(14px,15px) rotate(4deg)}}
+@keyframes bangaBob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-13px) rotate(3deg)}}
+@keyframes bangaWingBeat{from{transform:scale(.68,.62) rotate(-17deg)}to{transform:scale(1.18,1.28) rotate(17deg)}}
+.biome-banga.mood-resting{left:74%;top:59%;width:160px;height:160px;animation:bangaRest 4s ease-in-out infinite}
+.biome-banga.mood-resting .banga-fairy-body{font-size:68px;top:42px}
+.biome-banga.mood-resting .banga-fairy-wings{top:43px;opacity:.48}
+@keyframes bangaRest{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-4px) rotate(3deg)}}
+.biome-banga.mood-thoughtful .banga-fairy-body{filter:drop-shadow(0 0 15px #f5d58b) drop-shadow(0 8px 8px #263c3b66)}
+.biome-banga.mood-cheerful .banga-fairy-body{filter:drop-shadow(0 0 20px #fff0ad) drop-shadow(0 8px 8px #263c3b66)}
+.biome-career .biome-banga{left:72%;top:13%}
+.biome-education .biome-banga{left:73%;top:18%;animation-name:bangaLibraryDrift}
+.biome-home .biome-banga{left:70%;top:22%;animation-name:bangaHomeDrift}
+.biome-wellbeing .biome-banga{left:72%;top:17%;animation-name:bangaSpringDrift}
+.biome-creativity .biome-banga{left:67%;top:15%;animation-name:bangaAtelierDrift}
+.biome-finance .biome-banga{left:73%;top:20%;animation-name:bangaOrchardDrift}
+.biome-relationships .biome-banga{left:68%;top:19%;animation-name:bangaCourtyardDrift}
+.biome-experiences .biome-banga{left:72%;top:16%;animation-name:bangaMeadowDrift}
+@keyframes bangaLibraryDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-36px,22px)}}
+@keyframes bangaHomeDrift{0%,100%{transform:translate(0,0) rotate(2deg)}50%{transform:translate(-24px,30px) rotate(-5deg)}}
+@keyframes bangaSpringDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-50px,18px) scale(1.04)}}
+@keyframes bangaAtelierDrift{0%,100%{transform:translate(0,0) rotate(-3deg)}50%{transform:translate(-42px,-25px) rotate(6deg)}}
+@keyframes bangaOrchardDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-28px,35px)}}
+@keyframes bangaCourtyardDrift{0%,100%{transform:translate(0,0) rotate(3deg)}50%{transform:translate(-48px,10px) rotate(-4deg)}}
+@keyframes bangaMeadowDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-65px,-18px)}}
+@media(max-width:650px){.biome-banga{left:64%;top:18%;transform:scale(.82);transform-origin:top left}.biome-banga.mood-resting{left:68%;top:58%;transform:scale(.8)}.banga-biome-note{width:185px;right:34px;font-size:11px}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
