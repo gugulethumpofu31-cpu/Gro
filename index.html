@@ -99,7 +99,7 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .spot-sub{font:10px Arial,sans-serif;fill:#344e57;paint-order:stroke;stroke:#e8e6d5;stroke-width:2px}
 .world-decoration{pointer-events:none;filter:drop-shadow(0 5px 3px #233f3d66)}
 .banga-world{pointer-events:none;filter:drop-shadow(0 5px 5px #1e364655);animation:bangaFloat 3.5s ease-in-out infinite}
-@keyframes bangaFloat{0%,100%{transform:translate(500px,260px)}50%{transform:translate(500px,249px)}}
+.banga-world{filter:drop-shadow(0 5px 6px #1e364655);pointer-events:none}.banga-fairy{filter:drop-shadow(0 2px 2px #26394d66)}.banga-sparkles{animation:sparklePulse 1.8s ease-in-out infinite alternate}@keyframes sparklePulse{from{opacity:.35}to{opacity:1}}
 .world-legend{position:relative;z-index:2;display:flex;justify-content:center;flex-wrap:wrap;gap:12px 28px;color:#f3eedc;font:11px Arial,sans-serif;padding:12px 0 2px;border-top:1px solid #ffffff35}
 .world-companion{display:flex;gap:18px;align-items:center;margin:22px 0;padding:18px 22px;border:1px solid #ffffff30;border-radius:23px;background:linear-gradient(120deg,#f2eddf,#dce5df);color:#33445a;box-shadow:0 15px 38px #080f2044}
 .companion-orb{position:relative;flex:0 0 76px;width:76px;height:76px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fff6d8,#d8dce8);font-size:43px;box-shadow:0 0 30px #c6b9df77}
@@ -182,7 +182,17 @@ html=`<section class="world-intro"><div><div class="world-kicker">THE LIVING GAR
 <g opacity=".85"><path d="M260 120 l18 -20 18 20 -18 20Z" fill="#e9d6aa"/><path d="M748 445 l20 -23 20 23 -20 23Z" fill="#e9d6aa"/><path d="M500 535 l16 -18 16 18 -16 18Z" fill="#e9d6aa"/></g>
 <g class="world-decoration"><circle cx="105" cy="350" r="19" fill="#c3d2a5"/><circle cx="105" cy="350" r="9" fill="#718f68"/><circle cx="892" cy="130" r="23" fill="#c3d2a5"/><circle cx="892" cy="130" r="11" fill="#718f68"/><circle cx="785" cy="520" r="16" fill="#d5d5ad"/><circle cx="785" cy="520" r="7" fill="#78947b"/><path d="M110 355q-15 -30 -28 -30m28 30q18 -25 30 -27M890 136q-16 -29 -30 -28m30 28q18 -24 30 -22" fill="none" stroke="#dce8c9" stroke-width="5" stroke-linecap="round"/></g>
 ${paths}${spotSVG}
-<g class="banga-world" transform="translate(500 260)"><ellipse cx="0" cy="28" rx="23" ry="7" fill="#17343d" opacity=".25"/><text x="0" y="8" text-anchor="middle" font-size="35">🧚🏾‍♀️</text><path d="M-18 -14q-23 -24 -24 -4q9 15 24 12M18 -14q23 -24 24 -4q-9 15 -24 12" fill="#f5e8c7" opacity=".75"/></g>
+<g class="banga-world" aria-label="Banga fluttering around the garden">
+<animateMotion dur="34s" repeatCount="indefinite" rotate="auto" path="M 500,260 C 590,205 700,215 785,275 S 820,390 730,420 S 575,410 505,355 S 360,315 285,365 S 210,330 255,265 S 400,205 500,260"/>
+<ellipse cx="0" cy="28" rx="24" ry="8" fill="#17343d" opacity=".22"/>
+<circle cx="0" cy="-8" r="29" fill="#f8e8b8" opacity=".14"/>
+<g class="banga-wings" fill="#f7e8c5" stroke="#fff7dc" stroke-width="1.2" opacity=".88">
+<path d="M-10 -13 Q-47 -49 -48 -23 Q-42 -2 -13 -3Z"><animate attributeName="d" dur=".28s" repeatCount="indefinite" values="M-10 -13 Q-47 -49 -48 -23 Q-42 -2 -13 -3Z;M-10 -13 Q-44 -29 -42 -8 Q-34 2 -13 -3Z;M-10 -13 Q-47 -49 -48 -23 Q-42 -2 -13 -3Z"/></path>
+<path d="M10 -13 Q47 -49 48 -23 Q42 -2 13 -3Z"><animate attributeName="d" dur=".28s" repeatCount="indefinite" values="M10 -13 Q47 -49 48 -23 Q42 -2 13 -3Z;M10 -13 Q44 -29 42 -8 Q34 2 13 -3Z;M10 -13 Q47 -49 48 -23 Q42 -2 13 -3Z"/></path>
+</g>
+<text x="0" y="10" text-anchor="middle" font-size="36" class="banga-fairy">🧚🏾‍♀️</text>
+<g fill="#fff1c8" class="banga-sparkles"><text x="-36" y="-31" font-size="12">✧</text><text x="29" y="-37" font-size="10">✦</text><text x="34" y="8" font-size="8">✧</text></g>
+</g>
 </svg>
 <div class="world-legend"><span>✧ <b>${doneTotal}</b> intentions gathered</span><span>◌ <b>${openTotal}</b> still growing</span><span>🧚🏾‍♀️ Banga is ${ph==='night'?'dreaming nearby':'wandering the paths'}</span></div>
 </section>
