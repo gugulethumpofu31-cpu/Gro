@@ -111,6 +111,9 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .world-tools{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 5px}
 .world-tools button{border:1px solid #ffffff35;border-radius:25px;background:#ffffff12;color:#e9e7df;padding:10px 15px}
 @media(max-width:700px){.world-intro{display:block}.world-weather{display:inline-block;margin-top:15px}.living-world{padding:18px 8px 13px;border-radius:22px}.world-heading{font-size:9px;letter-spacing:1px}.world-heading small{font-size:8px}.world-map{margin:0 auto}.world-legend{font-size:10px;gap:9px 14px}.world-companion{padding:14px;gap:12px}.companion-orb{width:60px;height:60px;flex-basis:60px;font-size:35px}}
+
+/* Banga's attentive flight */
+.banga-world{filter:drop-shadow(0 5px 6px #1e364655);pointer-events:none}.banga-fairy{filter:drop-shadow(0 2px 2px #26394d66)}.banga-wings{transform-box:fill-box;transform-origin:center;animation:wingBeat .24s ease-in-out infinite alternate}@keyframes wingBeat{from{transform:scaleY(.72) rotate(-7deg)}to{transform:scaleY(1.08) rotate(7deg)}}.banga-sparkles{animation:sparklePulse 1.4s ease-in-out infinite alternate}@keyframes sparklePulse{from{opacity:.25}to{opacity:1}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
@@ -148,6 +151,18 @@ const spots=[
 { id:'relationships',x:180,y:445,plant:'🌷',building:'♡',name:'Relationships',detail:'Woven courtyard' },
 { id:'experiences',x:500,y:315,plant:'🦋',building:'⌖',name:'Experiences',detail:'Wayfinder meadow' }
 ];
+const priorityScore=(id)=>{
+ const pd=ensurePlotData(id),tasks=all.filter(t=>t.plot===id&&!t.done);let score=0;
+ const week=new Date(now().getTime()+7*86400000).toISOString().slice(0,10);
+ tasks.forEach(t=>{score+=t.due&&t.due<=day()?5:t.due&&t.due<=week?3:2});
+ pd.goals.filter(g=>!g.done).forEach(g=>{score+=g.due&&g.due<=day()?4:g.due&&g.due<=week?3:1});
+ pd.milestones.filter(m=>!m.done).forEach(m=>{score+=m.due&&m.due<=day()?4:m.due&&m.due<=week?3:1});
+ pd.habits.forEach(h=>{if(!(h.completedDates||[]).includes(day()))score+=2});return score;
+};
+const priorityVisits=spots.map(s=>({...s,priority:priorityScore(s.id)})).sort((a,b)=>b.priority-a.priority).slice(0,4);
+const bangaTarget=priorityVisits[0];
+const bangaRoutePoints=priorityVisits.map(s=>({x:s.x,y:s.y-39}));
+const bangaPath=bangaRoutePoints.length>1?bangaRoutePoints.map((p,i)=>i===0?'M '+p.x+' '+p.y:'Q '+((bangaRoutePoints[i-1].x+p.x)/2+(i%2?22:-22))+' '+((bangaRoutePoints[i-1].y+p.y)/2-34)+' '+p.x+' '+p.y).join(' ')+' Q '+((bangaRoutePoints[bangaRoutePoints.length-1].x+bangaRoutePoints[0].x)/2)+' '+(Math.min(bangaRoutePoints[bangaRoutePoints.length-1].y,bangaRoutePoints[0].y)-65)+' '+bangaRoutePoints[0].x+' '+bangaRoutePoints[0].y:'M '+bangaRoutePoints[0].x+' '+bangaRoutePoints[0].y;
 const paths=spots.map((s,i)=>{const next=spots[(i+1)%spots.length];return `<path d="M ${s.x} ${s.y+38} Q ${(s.x+next.x)/2} ${(s.y+next.y)/2-24} ${next.x} ${next.y+38}" fill="none" stroke="#d8cda8" stroke-width="13" stroke-linecap="round" opacity=".78"/><path d="M ${s.x} ${s.y+38} Q ${(s.x+next.x)/2} ${(s.y+next.y)/2-24} ${next.x} ${next.y+38}" fill="none" stroke="#f5e8c6" stroke-width="2" stroke-dasharray="3 11" stroke-linecap="round" opacity=".9"/>`}).join('');
 const spotSVG=spots.map(s=>{const meta=PLOT_META[s.id],done=count(s.id),pending=all.filter(t=>t.plot===s.id&&!t.done).length;return `<g class="world-spot" data-plot="${s.id}" role="button" tabindex="0" aria-label="Enter ${s.name} garden" style="--spot:${meta.accent}">
 <ellipse cx="${s.x}" cy="${s.y+54}" rx="83" ry="25" fill="#132c35" opacity=".24"/>
@@ -183,7 +198,7 @@ html=`<section class="world-intro"><div><div class="world-kicker">THE LIVING GAR
 <g class="world-decoration"><circle cx="105" cy="350" r="19" fill="#c3d2a5"/><circle cx="105" cy="350" r="9" fill="#718f68"/><circle cx="892" cy="130" r="23" fill="#c3d2a5"/><circle cx="892" cy="130" r="11" fill="#718f68"/><circle cx="785" cy="520" r="16" fill="#d5d5ad"/><circle cx="785" cy="520" r="7" fill="#78947b"/><path d="M110 355q-15 -30 -28 -30m28 30q18 -25 30 -27M890 136q-16 -29 -30 -28m30 28q18 -24 30 -22" fill="none" stroke="#dce8c9" stroke-width="5" stroke-linecap="round"/></g>
 ${paths}${spotSVG}
 <g class="banga-world" aria-label="Banga fluttering around the garden">
-<animateMotion dur="34s" repeatCount="indefinite" rotate="auto" path="M 500,260 C 590,205 700,215 785,275 S 820,390 730,420 S 575,410 505,355 S 360,315 285,365 S 210,330 255,265 S 400,205 500,260"/>
+<animateMotion dur="30s" repeatCount="indefinite" rotate="auto" calcMode="paced" path="${bangaPath}"/>
 <ellipse cx="0" cy="28" rx="24" ry="8" fill="#17343d" opacity=".22"/>
 <circle cx="0" cy="-8" r="29" fill="#f8e8b8" opacity=".14"/>
 <g class="banga-wings" fill="#f7e8c5" stroke="#fff7dc" stroke-width="1.2" opacity=".88">
@@ -194,7 +209,7 @@ ${paths}${spotSVG}
 <g fill="#fff1c8" class="banga-sparkles"><text x="-36" y="-31" font-size="12">✧</text><text x="29" y="-37" font-size="10">✦</text><text x="34" y="8" font-size="8">✧</text></g>
 </g>
 </svg>
-<div class="world-legend"><span>✧ <b>${doneTotal}</b> intentions gathered</span><span>◌ <b>${openTotal}</b> still growing</span><span>🧚🏾‍♀️ Banga is ${ph==='night'?'dreaming nearby':'wandering the paths'}</span></div>
+<div class="world-legend"><span>✧ <b>${doneTotal}</b> intentions gathered</span><span>◌ <b>${openTotal}</b> still growing</span><span>🧚🏾‍♀️ Banga is ${ph==='night'?'dreaming':('tending '+bangaTarget.name+' first')}</span></div>
 </section>
 <section class="world-companion"><div class="companion-orb">🧚🏾‍♀️<i>✦</i></div><div class="companion-copy"><div class="world-kicker">BANGA · YOUR GARDEN COMPANION</div><p>${bangaLine}</p><button class="world-talk" data-banga="garden">Talk to Banga <span>↗</span></button><div class="banga-talk" id="bangaTalk">${escapeHTML(phase()==='night'?'I am dreaming of the garden tonight. Leave a little note for the morning.':openTotal?'Let us tend one thing at a time. Which path feels right?':'Look at all that has grown. What would you like to nurture next?')}</div></div></section>
 <section class="world-tools"><button data-page="planner">Open planner</button><button data-page="growth">Growth observatory</button><button data-page="journal">Garden journal</button></section>`;
