@@ -190,6 +190,33 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .place-room.rose{background:linear-gradient(180deg,#e9cdd1,#9c7181)}.place-room.rose:before{background:linear-gradient(90deg,#e8c7ca,#f7e5df,#d9b1bb);border-color:#a66e7d}
 .place-room.wayfinder{background:linear-gradient(180deg,#c3d4c9,#718d83)}.place-room.wayfinder:before{background:linear-gradient(90deg,#dce6d8,#f3ecd7,#b8cbbd);border-color:#728a7c}
 .place-room.timber{background:linear-gradient(180deg,#b6c8b0,#6b775d)}.place-room.timber:before{background:repeating-linear-gradient(90deg,#a77d52 0 12px,#684b36 12px 17px);border-color:#654a35}
+
+/* GRO 1.4 · Career canopy, depth and material detail */
+.biome-career .biome-architecture{top:46%;width:min(590px,78%);height:290px;filter:drop-shadow(0 25px 22px #163b2d88)}
+.biome-career .arch-ground{height:58px;bottom:0;background:radial-gradient(ellipse,#193d2d88,transparent 70%);filter:blur(8px)}
+.biome-career .arch-building{width:88%;height:190px;filter:drop-shadow(0 13px 8px #243b2a77)}
+.biome-career .arch-roof{height:75px;top:0;left:0;right:0;clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(145deg,#b18b5c 0%,#76563b 44%,#463a2c 100%);filter:drop-shadow(0 8px 4px #2d3d2d88)}
+.biome-career .arch-body{left:13%;right:13%;top:62px;bottom:0;border:8px solid #67482f;background:linear-gradient(90deg,#b98d5c,#e8d0a1 18%,#f0dfb9 50%,#c9a477 82%,#8a6240);box-shadow:inset 0 0 0 5px #fff5,inset 0 -18px 25px #75533955}
+.biome-career .arch-door{left:39%;width:22%;height:68%;background:linear-gradient(90deg,#4a3527,#9a7047 48%,#4a3527);border:4px solid #d6b77d;box-shadow:inset 0 0 0 3px #ffffff44}
+.biome-career .arch-window{top:82px;width:19%;height:52px;border:6px solid #725033;background:linear-gradient(180deg,#bfe0d4,#6c9b83);box-shadow:inset 0 0 0 3px #f7e4b9,0 0 16px #fff4}
+.biome-career .arch-sign{top:72%;font-size:34px;color:#f9e5ad;text-shadow:0 3px 5px #49321f}
+.biome-career .arch-extra{filter:drop-shadow(0 8px 5px #203d2e88)}
+.biome-career .arch-extra.one{left:-4%;bottom:13%;font-size:58px}
+.biome-career .arch-extra.two{right:-4%;bottom:12%;font-size:55px}
+.biome-career .arch-extra.three{right:8%;top:-7%;font-size:42px}
+.biome-career .arch-label{bottom:-9px;padding:8px 17px;background:linear-gradient(#fff4d9,#d7bd8e);border:1px solid #a78354;color:#513d2c;box-shadow:0 5px 12px #233e3155;letter-spacing:.5px}
+.biome-career .biome-landmark{top:73%;width:min(310px,50%);min-height:74px;padding:8px 12px;border-radius:14px;background:#f6ead8ed;box-shadow:0 10px 22px #1d493866}
+.biome-career .biome-landmark .landmark-icon{font-size:30px}.biome-career .biome-landmark strong{font-size:14px}.biome-career .biome-landmark small{font-size:10px}
+.biome-career .biome-banga{left:77%;top:15%}
+.biome-career .biome-tree{filter:drop-shadow(0 13px 8px #1b392d88)}
+.biome-career .biome-scene{background:linear-gradient(#a9c5c4,#6c957d)}
+.place-room.career-room{background:linear-gradient(180deg,#b9d0b6 0%,#829f7c 58%,#6d573d 59%,#a47c51 100%);box-shadow:inset 0 0 60px #253e2b66}
+.place-room.career-room:before{inset:0 0 39%;background:linear-gradient(180deg,#d9e8d3 0%,#b7d0b1 70%,#8eae88 100%);border-bottom:12px solid #67482f;box-shadow:inset 0 -10px 18px #4d6d4a55}
+.place-room.career-room:after{height:112px;bottom:-51px;background:repeating-linear-gradient(0deg,#8b6442 0 9px,#b18b5b 9px 12px);border-top:8px solid #e0c18a;box-shadow:inset 0 10px 0 #5e452e}
+.place-room.career-room .place-object{z-index:3;background:linear-gradient(145deg,#fff8e8,#ead5aa);border:1px solid #c9a977;box-shadow:0 12px 22px #263e3155}
+.place-room.career-room .place-object:nth-child(1){left:5%;bottom:13%}.place-room.career-room .place-object:nth-child(2){left:39%;bottom:18%}.place-room.career-room .place-object:nth-child(3){right:5%;bottom:13%}
+.place-room.career-room .place-object span{filter:drop-shadow(0 3px 2px #4b654b55)}
+@media(max-width:650px){.biome-career .biome-architecture{width:96%;height:230px;top:48%}.biome-career .arch-building{height:155px}.biome-career .arch-roof{height:58px}.biome-career .arch-body{top:48px}.biome-career .arch-window{top:64px;height:39px}.biome-career .biome-landmark{top:74%;width:60%}.biome-career .biome-banga{left:73%;top:14%}}
 .place-footnote{font:11px/1.5 Arial,sans-serif;color:#e1dfcf}
 @media(max-width:650px){.place-interior{padding:13px}.place-room{min-height:180px}.place-object{min-width:65px;padding:8px 6px}.place-object span{font-size:25px}.place-entry{top:76%}}
 
@@ -385,7 +412,7 @@ finance:{title:'The Counting House',description:'A sunlit room overlooks the orc
 relationships:{title:'The Rose Courtyard',description:'A shared table rests beneath flowering arches. Make room for connection, thoughtful gestures and the relationships you want to nurture.',room:'rose',objects:[['💌','Letters and thoughts','journal'],['🍵','Time together','habits'],['🌹','Shared intentions','goals']]},
 experiences:{title:'The Wayfinder Pavilion',description:'Maps and open paths point towards places still waiting to be discovered. Keep the experiences you want to make room for here.',room:'wayfinder',objects:[['🗺️','Travel map','goals'],['🎒','Prepare a journey','tasks'],['✨','Memory book','journal']]}
 }[selectedPlot];
-const placeInteriorHTML='<div class="place-interior" id="placeInterior" aria-hidden="true"><div class="place-topline"><small>Step inside · '+p[1]+'</small><button class="place-close" data-close-place aria-label="Close place">×</button></div><h2 class="place-heading">'+placeRooms.title+'</h2><p class="place-description">'+placeRooms.description+'</p><div class="place-room '+placeRooms.room+'">'+placeRooms.objects.map(o=>'<button class="place-object" data-place-action="'+o[2]+'"><span>'+o[0]+'</span>'+o[1]+'</button>').join('')+'</div><div class="place-footnote">Choose an object to tend this part of your garden. Your notes and progress remain safely in your existing plot records.</div></div>';
+const placeInteriorHTML='<div class="place-interior" id="placeInterior" aria-hidden="true"><div class="place-topline"><small>Step inside · '+p[1]+'</small><button class="place-close" data-close-place aria-label="Close place">×</button></div><h2 class="place-heading">'+placeRooms.title+'</h2><p class="place-description">'+placeRooms.description+'</p><div class="place-room '+(selectedPlot==='career'?'career-room':placeRooms.room)+'">'+placeRooms.objects.map(o=>'<button class="place-object" data-place-action="'+o[2]+'"><span>'+o[0]+'</span>'+o[1]+'</button>').join('')+'</div><div class="place-footnote">Choose an object to tend this part of your garden. Your notes and progress remain safely in your existing plot records.</div></div>';
 const architectureHTML=architecture.kind==='spring'
 ?'<div class="biome-architecture arch-spring"><span class="arch-extra one">'+architecture.extras[0]+'</span><span class="arch-extra two">'+architecture.extras[1]+'</span><span class="arch-extra three">'+architecture.extras[2]+'</span><div class="spring-pool"></div><div class="spring-fountain">⛲</div><span class="arch-label">'+architecture.label+'</span></div>'
 :'<div class="biome-architecture arch-'+architecture.kind+'"><div class="arch-ground"></div><div class="arch-building"><div class="arch-roof"></div><div class="arch-body"></div><div class="arch-door"></div><div class="arch-window left"></div><div class="arch-window right"></div><div class="arch-sign">'+architecture.sign+'</div></div><span class="arch-extra one">'+architecture.extras[0]+'</span><span class="arch-extra two">'+architecture.extras[1]+'</span><span class="arch-extra three">'+architecture.extras[2]+'</span><span class="arch-label">'+architecture.label+'</span></div>';
