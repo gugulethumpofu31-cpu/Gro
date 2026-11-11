@@ -278,6 +278,17 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 @keyframes bangaCourtyardDrift{0%,100%{transform:translate(0,0) rotate(3deg)}50%{transform:translate(-48px,10px) rotate(-4deg)}}
 @keyframes bangaMeadowDrift{0%,100%{transform:translate(0,0)}50%{transform:translate(-65px,-18px)}}
 @media(max-width:650px){.biome-banga{left:64%;top:18%;transform:scale(.82);transform-origin:top left}.biome-banga.mood-resting{left:68%;top:58%;transform:scale(.8)}.banga-biome-note{width:185px;right:34px;font-size:11px}}
+
+/* GRO Career illustrated environment */
+.biome-career{position:relative;isolation:isolate;overflow:hidden;background:#294c3c}
+.biome-career .career-art-background{position:absolute;inset:0;z-index:0;background-image:url('assets/career-canopy.svg');background-size:cover;background-position:center 48%;pointer-events:none}
+.biome-career .biome-sky,.biome-career .biome-hill,.biome-career .biome-water,.biome-career .biome-path,.biome-career .biome-tree,.biome-career .biome-architecture,.biome-career .biome-landmark{display:none!important}
+.biome-career .biome-banga{z-index:8;left:13%;top:42%;transform:scale(1.25)}
+.biome-career .biome-caption{z-index:9;color:#fff1c9;text-shadow:0 2px 8px #17251e}
+.biome-career .biome-actions{z-index:10}
+.biome-career .place-entry{z-index:12;top:auto;bottom:75px;left:50%;background:#173b2cef;color:#f7e3ae;border:1px solid #d9b45e}
+.biome-career .place-interior{z-index:20}
+@media(max-width:650px){.biome-career .career-art-background{background-position:54% center}.biome-career .biome-banga{left:3%;top:39%;transform:scale(.9)}.biome-career .place-entry{bottom:88px}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
@@ -424,7 +435,7 @@ const biomeOpenMilestones=pd.milestones.filter(x=>!x.done);
 const biomeHabitsPending=pd.habits.filter(h=>!(h.completedDates||[]).includes(day()));
 const bangaBiomeNote=phase()==='night'?'The garden is quiet now. I am settling among the flowers to dream.':biomeOverdue.length?'I noticed '+biomeOverdue.length+' overdue '+(biomeOverdue.length===1?'task':'tasks')+' here. Shall we choose one gentle next step?':biomeOpenTasks.length?'There is '+biomeOpenTasks.length+' growing '+(biomeOpenTasks.length===1?'task':'tasks')+' here. I can keep you company while you tend one.':biomeOpenGoals.length?'Your goals are taking root. What small action could help one of them grow today?':biomeHabitsPending.length?'A little ritual is waiting here. Would you like to check in on a habit?':biomeOpenMilestones.length?'You are moving towards your next milestone. Keep the pace kind and steady.':'This little corner is flourishing. Take a moment to notice what you have nurtured.';
 const bangaBiomeMood=phase()==='night'?'resting':biomeOverdue.length?'thoughtful':biomeOpenTasks.length?'attentive':'cheerful';
-const biomeScene=`<section class="biome-scene biome-${selectedPlot}" aria-label="${escapeHTML(p[1])} living environment">
+const biomeScene=`<section class="biome-scene biome-${selectedPlot}"><div class="career-art-background" aria-hidden="true"></div>
 <div class="biome-sky"><span class="biome-sun"></span><span class="biome-cloud c1"></span><span class="biome-cloud c2"></span><span class="biome-skyline"></span></div>
 <div class="biome-hill hill-back"></div><div class="biome-hill hill-front"></div>
 <div class="biome-water"></div><div class="biome-path"></div>
