@@ -1,57 +1,145 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1200 680">
 <defs>
- <linearGradient id="earth" x2="0" y2="1"><stop stop-color="#79975c"/><stop offset="1" stop-color="#31583e"/></linearGradient>
- <linearGradient id="side" x2="0" y2="1"><stop stop-color="#93613e"/><stop offset="1" stop-color="#392a25"/></linearGradient>
- <linearGradient id="roof" x2="0" y2="1"><stop stop-color="#c18a55"/><stop offset="1" stop-color="#57382b"/></linearGradient>
- <linearGradient id="bark" x2="1" y2="0"><stop stop-color="#392b25"/><stop offset=".5" stop-color="#9a6942"/><stop offset="1" stop-color="#4b3026"/></linearGradient>
- <linearGradient id="leaf" x2="0" y2="1"><stop stop-color="#a8c879"/><stop offset="1" stop-color="#315d3d"/></linearGradient>
- <linearGradient id="water" x2="1" y2="1"><stop stop-color="#c3e8d8"/><stop offset="1" stop-color="#4d9990"/></linearGradient>
- <filter id="drop"><feGaussianBlur stdDeviation="10"/></filter>
- <g id="tree"><path d="M-10 0L-4 -90 9 -90 15 0Z" fill="url(#bark)"/><path d="M0 -65L-35 -105M5 -76L40 -120" stroke="#69452f" stroke-width="10" stroke-linecap="round"/><g fill="url(#leaf)" stroke="#d4df9a" stroke-opacity=".35" stroke-width="3"><ellipse cx="0" cy="-140" rx="48" ry="38"/><ellipse cx="-32" cy="-116" rx="37" ry="29"/><ellipse cx="35" cy="-112" rx="39" ry="31"/><ellipse cx="0" cy="-95" rx="42" ry="30"/></g></g>
- <g id="lantern"><path d="M0 -28V-12" stroke="#533629" stroke-width="4"/><path d="M-10 -12H10L8 12H-8Z" fill="#e8b96c" stroke="#67432c" stroke-width="3"/><circle cy="0" r="15" fill="#ffe9a6" opacity=".25"/></g>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#d9b58d"/><stop offset=".42" stop-color="#b97861"/><stop offset="1" stop-color="#415f4b"/></linearGradient>
+ <linearGradient id="hill" x2=".2" y2="1"><stop stop-color="#91a66d"/><stop offset=".5" stop-color="#557c50"/><stop offset="1" stop-color="#244b38"/></linearGradient>
+ <linearGradient id="deepHill" x2="0" y2="1"><stop stop-color="#627d58"/><stop offset="1" stop-color="#1c4030"/></linearGradient>
+ <linearGradient id="bark" x2="1" y2=".2"><stop stop-color="#34271f"/><stop offset=".3" stop-color="#795039"/><stop offset=".58" stop-color="#a5754d"/><stop offset="1" stop-color="#3e2d24"/></linearGradient>
+ <linearGradient id="leaf" x2=".25" y2="1"><stop stop-color="#c0cf85"/><stop offset=".35" stop-color="#729a58"/><stop offset=".75" stop-color="#376847"/><stop offset="1" stop-color="#214633"/></linearGradient>
+ <linearGradient id="leafLight" x2=".2" y2="1"><stop stop-color="#d8d99a"/><stop offset=".45" stop-color="#8da968"/><stop offset="1" stop-color="#47704a"/></linearGradient>
+ <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#d3a16b"/><stop offset=".22" stop-color="#93613e"/><stop offset=".7" stop-color="#65412f"/><stop offset="1" stop-color="#3d2b24"/></linearGradient>
+ <linearGradient id="roof" x2=".1" y2="1"><stop stop-color="#d9ad72"/><stop offset=".24" stop-color="#9a6846"/><stop offset="1" stop-color="#54382b"/></linearGradient>
+ <linearGradient id="water" x2=".2" y2="1"><stop stop-color="#c5e5d0"/><stop offset=".4" stop-color="#72b6a4"/><stop offset="1" stop-color="#377c78"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#fff4c8" stop-opacity=".95"/><stop offset=".35" stop-color="#f8dba0" stop-opacity=".48"/><stop offset="1" stop-color="#f8dba0" stop-opacity="0"/></radialGradient>
+ <radialGradient id="lantern"><stop stop-color="#fff5c5"/><stop offset=".35" stop-color="#ffd77f" stop-opacity=".65"/><stop offset="1" stop-color="#ffd77f" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+ <filter id="shadow"><feGaussianBlur stdDeviation="9"/></filter>
+ <filter id="glow"><feGaussianBlur stdDeviation="5"/></filter>
+ <pattern id="grain" width="46" height="34" patternUnits="userSpaceOnUse"><path d="M0 8Q12 3 25 8T46 8M-5 25Q12 19 30 25T52 25" fill="none" stroke="#f4d4a0" stroke-opacity=".13" stroke-width="2"/></pattern>
+ <g id="leafCluster">
+  <path d="M0 22Q-42 -2 -31 -39Q7 -33 0 22Z" fill="#47764a"/><path d="M0 20Q-12 -24 22 -45Q43 -7 0 20Z" fill="#739b58"/><path d="M2 20Q28 -15 54 -5Q45 27 2 20Z" fill="#a2b86d"/><path d="M0 22Q-5 -5 0 -28" stroke="#d4d89a" stroke-opacity=".6" stroke-width="2" fill="none"/>
+ </g>
+ <g id="flower">
+  <path d="M0 12V36" stroke="#42613d" stroke-width="3"/><g fill="#d99ac0"><ellipse cy="-3" rx="6" ry="11"/><ellipse cy="-3" rx="6" ry="11" transform="rotate(72)"/><ellipse cy="-3" rx="6" ry="11" transform="rotate(144)"/><ellipse cy="-3" rx="6" ry="11" transform="rotate(216)"/><ellipse cy="-3" rx="6" ry="11" transform="rotate(288)"/></g><circle cy="-3" r="4" fill="#f3d58b"/>
+ </g>
+ <g id="tree">
+  <path d="M-13 5Q-4 -70 -10 -139L13 -139Q5 -70 17 5Z" fill="url(#bark)"/>
+  <path d="M-3 -95Q-42 -130 -54 -162M8 -112Q46 -145 57 -175M0 -72Q-35 -91 -43 -116" fill="none" stroke="#704a34" stroke-width="10" stroke-linecap="round"/>
+  <path d="M-8 -130Q-44 -181 -7 -216Q35 -232 48 -193Q84 -179 66 -143Q43 -115 3 -135Q-27 -108 -8 -130Z" fill="url(#leaf)" stroke="#c4d18c" stroke-opacity=".45" stroke-width="4"/>
+  <path d="M-47 -168Q-57 -202 -29 -220Q-4 -232 10 -207Q8 -178 -18 -159Z" fill="url(#leafLight)"/>
+  <path d="M18 -177Q25 -218 58 -217Q85 -200 65 -171Q42 -153 18 -177Z" fill="#527e4b"/>
+  <path d="M-24 -145Q-11 -177 15 -168Q36 -159 22 -133Q0 -118 -24 -145Z" fill="#8eaa65"/>
+ </g>
 </defs>
-<!-- raised island -->
-<ellipse cx="600" cy="545" rx="500" ry="82" fill="#102b1d" opacity=".45" filter="url(#drop)"/>
-<path d="M90 315L600 80 1110 315 600 565Z" fill="url(#side)" stroke="#d6ae73" stroke-width="8"/>
-<path d="M90 290L600 55 1110 290 600 540Z" fill="url(#earth)" stroke="#e4c58d" stroke-width="9"/>
-<path d="M120 290L600 70 1080 290 600 520Z" fill="none" stroke="#b5c982" stroke-width="8" opacity=".55"/>
-<!-- garden lawns and winding path -->
-<path d="M200 300L600 115 1000 300 600 490Z" fill="#537b4b" opacity=".75"/>
-<path d="M265 340Q370 270 485 325T690 315Q820 285 935 235" fill="none" stroke="#d4b47c" stroke-width="54" stroke-linecap="round"/>
-<path d="M265 340Q370 270 485 325T690 315Q820 285 935 235" fill="none" stroke="#f0d9a6" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/>
-<!-- brook and bridge -->
-<path d="M170 400Q330 345 445 385T700 390Q860 380 1030 300" fill="none" stroke="#286b68" stroke-width="48" stroke-linecap="round"/>
-<path d="M170 392Q330 337 445 377T700 382Q860 372 1030 292" fill="none" stroke="url(#water)" stroke-width="34" stroke-linecap="round"/>
-<path d="M555 350L680 292 750 325 625 390Z" fill="#65432e" stroke="#d9b579" stroke-width="7"/>
-<path d="M570 345L625 375M595 333L650 363M620 321L675 350M645 309L700 338" stroke="#d9b579" stroke-width="5"/>
-<path d="M560 345L680 288M630 390L750 325" stroke="#513526" stroke-width="9"/>
-<!-- pavilion platform and posts -->
-<path d="M400 260L600 165 805 260 600 360Z" fill="#583a2b" stroke="#d8b178" stroke-width="8"/>
-<path d="M425 255L600 175 780 255 600 340Z" fill="#a16d42" stroke="#edcb8d" stroke-width="6"/>
-<g stroke="#503427" stroke-width="13"><path d="M455 250V345M745 250V345M600 320V420"/></g>
-<!-- pavilion walls and arches -->
-<path d="M455 185L600 105 745 185V270L600 350 455 270Z" fill="#65432e" stroke="#d6ad72" stroke-width="7"/>
-<path d="M475 190L600 122 725 190V255L600 323 475 255Z" fill="#294b39"/>
-<path d="M540 285V205Q600 145 660 205V285Z" fill="#d9b77c" stroke="#4c3326" stroke-width="8"/>
-<path d="M555 278V210Q600 168 645 210V278Z" fill="#9ab99a"/>
-<path d="M600 170V278M555 235H645" stroke="#f0d6a2" stroke-width="6"/>
-<!-- roof geometry -->
-<path d="M385 195L600 65 820 195 775 220 600 120 430 220Z" fill="url(#roof)" stroke="#e0bb7d" stroke-width="10"/>
-<path d="M405 194L600 80 800 194" fill="none" stroke="#f0d39a" stroke-width="7"/>
-<path d="M600 65V120" stroke="#53372a" stroke-width="10"/>
-<!-- trees, separately modelled at different depths -->
-<use href="#tree" transform="translate(265 275) scale(1.25)"/>
-<use href="#tree" transform="translate(365 185) scale(.92)"/>
-<use href="#tree" transform="translate(855 180) scale(1.05)"/>
-<use href="#tree" transform="translate(980 280) scale(1.32)"/>
-<use href="#tree" transform="translate(180 380) scale(.82)"/>
-<use href="#tree" transform="translate(1030 390) scale(.88)"/>
-<!-- canopy branches -->
-<path d="M70 120Q210 20 340 100T580 70M770 55Q940 -10 1120 110" fill="none" stroke="#47342a" stroke-width="26" stroke-linecap="round"/>
-<g fill="#6f9953" stroke="#c1d58b" stroke-opacity=".4" stroke-width="3"><ellipse cx="170" cy="90" rx="100" ry="55"/><ellipse cx="300" cy="70" rx="105" ry="58"/><ellipse cx="465" cy="70" rx="100" ry="54"/><ellipse cx="900" cy="65" rx="115" ry="62"/><ellipse cx="1050" cy="100" rx="105" ry="55"/></g>
-<!-- flowers and planters -->
-<g fill="#c66ea8"><circle cx="330" cy="340" r="9"/><circle cx="350" cy="355" r="8"/><circle cx="900" cy="340" r="9"/><circle cx="920" cy="350" r="8"/><circle cx="475" cy="400" r="8"/><circle cx="820" cy="410" r="8"/></g>
-<g fill="#e9c981"><circle cx="330" cy="340" r="4"/><circle cx="900" cy="340" r="4"/><circle cx="475" cy="400" r="4"/><circle cx="820" cy="410" r="4"/></g>
-<!-- lanterns -->
-<use href="#lantern" transform="translate(455 210)"/><use href="#lantern" transform="translate(745 210)"/>
+<!-- dusk-gold sky and distant wooded valley -->
+<rect width="1200" height="680" fill="url(#sky)"/>
+<circle cx="950" cy="135" r="210" fill="url(#sun)"/>
+<path d="M0 330Q140 225 270 290T520 270T780 275T1030 245T1200 285V680H0Z" fill="#66785a"/>
+<path d="M0 385Q170 280 325 355T620 320T930 350T1200 300V680H0Z" fill="url(#deepHill)"/>
+<path d="M0 430Q180 350 340 410T680 390T970 410T1200 370V680H0Z" fill="#355b40"/>
+<!-- distant mist between the trees -->
+<path d="M0 300Q220 245 420 300T820 285T1200 280" fill="none" stroke="#f3d7a5" stroke-opacity=".35" stroke-width="55" filter="url(#soft)"/>
+<!-- immense old trees framing the scene -->
+<use xlink:href="#tree" transform="translate(85 490) scale(2.15)"/>
+<use xlink:href="#tree" transform="translate(220 410) scale(1.45)"/>
+<use xlink:href="#tree" transform="translate(1090 460) scale(2.05)"/>
+<use xlink:href="#tree" transform="translate(980 390) scale(1.38)"/>
+<use xlink:href="#tree" transform="translate(400 330) scale(.9)"/>
+<use xlink:href="#tree" transform="translate(850 320) scale(.95)"/>
+<!-- high canopy branches, irregular leaf masses -->
+<path d="M-35 85Q115 -15 240 68T470 35M0 160Q145 70 290 135T510 115M700 35Q850 -45 990 45T1240 60M760 135Q920 65 1060 145T1240 125" fill="none" stroke="#473329" stroke-width="31" stroke-linecap="round"/>
+<g fill="url(#leaf)" stroke="#b6c987" stroke-opacity=".45" stroke-width="4">
+ <path d="M-35 145Q-55 15 95 8Q185 -18 220 75Q270 120 194 188Q120 230 60 180Z"/>
+ <path d="M125 90Q120 -18 260 -18Q370 -15 375 75Q395 150 290 172Q185 180 125 90Z"/>
+ <path d="M300 105Q315 -8 450 0Q555 0 570 80Q570 150 465 170Q360 180 300 105Z"/>
+ <path d="M750 78Q760 -40 900 -30Q1015 -15 1015 75Q1000 160 890 165Q780 150 750 78Z"/>
+ <path d="M950 125Q970 10 1100 20Q1220 35 1230 140Q1205 225 1090 220Q980 210 950 125Z"/>
+</g>
+<g fill="none" stroke="#d4d99a" stroke-opacity=".4" stroke-width="4">
+ <path d="M15 105Q90 50 175 65M160 88Q235 22 330 45M350 95Q430 30 520 50M790 70Q870 8 960 32M1000 125Q1100 55 1185 85"/>
+</g>
+<!-- hanging wisteria and vines -->
+<g fill="none" stroke="#654532" stroke-width="8" stroke-linecap="round">
+ <path d="M165 0Q130 100 175 150T155 260M365 0Q330 85 390 150T370 260M1015 0Q980 90 1030 155T1010 265"/>
+</g>
+<g fill="#c27caf" opacity=".9">
+ <path d="M155 125Q120 175 155 230Q190 175 155 125Z"/><path d="M375 115Q340 170 375 235Q410 170 375 115Z"/><path d="M1020 120Q985 175 1020 240Q1055 175 1020 120Z"/>
+ <circle cx="145" cy="165" r="7"/><circle cx="164" cy="185" r="7"/><circle cx="365" cy="165" r="7"/><circle cx="385" cy="190" r="7"/><circle cx="1010" cy="170" r="7"/><circle cx="1030" cy="195" r="7"/>
+</g>
+<!-- raised garden island, organic turf and hand-cut stone edging -->
+<ellipse cx="600" cy="582" rx="535" ry="74" fill="#10291c" opacity=".42" filter="url(#shadow)"/>
+<path d="M70 390Q330 270 600 300Q890 260 1130 390L600 655Z" fill="#4d392c" stroke="#d4ad76" stroke-width="13"/>
+<path d="M85 375Q335 260 600 285Q865 255 1115 375L600 625Z" fill="url(#hill)" stroke="#e4c48b" stroke-width="9"/>
+<path d="M115 375Q360 285 600 310Q845 280 1080 375L600 595Z" fill="#527a4b" opacity=".72"/>
+<path d="M130 382Q360 300 600 325Q840 300 1060 382" fill="none" stroke="#b9c982" stroke-width="8" opacity=".5"/>
+<!-- winding pale stone path -->
+<path d="M225 475Q330 400 440 425T650 420Q810 410 930 335" fill="none" stroke="#72513a" stroke-width="70" stroke-linecap="round" opacity=".7"/>
+<path d="M225 460Q330 385 440 410T650 405Q810 395 930 320" fill="none" stroke="#d7bd8b" stroke-width="51" stroke-linecap="round"/>
+<path d="M225 460Q330 385 440 410T650 405Q810 395 930 320" fill="none" stroke="#f4e1b5" stroke-width="4" stroke-dasharray="2 20" stroke-linecap="round"/>
+<!-- little stream with banks and stepping stones -->
+<path d="M125 520Q275 450 400 492T650 490Q850 490 1085 370" fill="none" stroke="#493b2c" stroke-width="72" stroke-linecap="round"/>
+<path d="M125 505Q275 435 400 477T650 475Q850 475 1085 355" fill="none" stroke="url(#water)" stroke-width="54" stroke-linecap="round"/>
+<path d="M145 490Q280 445 395 488T650 487Q850 485 1065 365" fill="none" stroke="#e0f1d1" stroke-opacity=".65" stroke-width="5" stroke-dasharray="34 26" stroke-linecap="round"/>
+<g fill="#b7c9a0" stroke="#e3d7ad" stroke-width="4"><ellipse cx="265" cy="486" rx="20" ry="8" transform="rotate(-15 265 486)"/><ellipse cx="350" cy="493" rx="17" ry="7"/><ellipse cx="820" cy="460" rx="18" ry="8" transform="rotate(-25 820 460)"/></g>
+<!-- arched timber bridge over the stream -->
+<path d="M520 465Q610 390 720 430L750 454Q635 420 540 490Z" fill="#503628" stroke="#d7ad74" stroke-width="8"/>
+<path d="M530 455Q620 385 730 425" fill="none" stroke="#e5c58d" stroke-width="13"/>
+<g stroke="#9a6b45" stroke-width="7"><path d="M555 445L570 475M585 425L600 457M620 414L635 447M655 414L670 448M690 420L705 452"/></g>
+<path d="M530 458Q620 390 730 430" fill="none" stroke="#f1d29b" stroke-width="4"/>
+<!-- pavilion shadow and timber terrace -->
+<ellipse cx="610" cy="415" rx="245" ry="80" fill="#142b1e" opacity=".42" filter="url(#shadow)"/>
+<path d="M365 365L600 245 850 365L610 490Z" fill="#493126" stroke="#d3a56d" stroke-width="11"/>
+<path d="M390 360L600 260 825 360L610 470Z" fill="url(#wood)" stroke="#e9c58b" stroke-width="7"/>
+<path d="M410 358L600 272 805 358" fill="none" stroke="#f1d6a2" stroke-width="6"/>
+<!-- pavilion timber walls with warm interior -->
+<path d="M430 260L600 170 770 260V380L600 465 430 380Z" fill="#53382b" stroke="#c9975d" stroke-width="9"/>
+<path d="M450 268L600 190 750 268V365L600 440 450 365Z" fill="#234735"/>
+<path d="M480 280L600 215 720 280V360L600 420 480 360Z" fill="#45664a"/>
+<!-- grand arched doorway -->
+<path d="M540 385V292Q600 222 660 292V385Z" fill="#3c2b23" stroke="#d5a86d" stroke-width="13"/>
+<path d="M555 380V297Q600 245 645 297V380Z" fill="#a7c5a2"/>
+<path d="M600 250V380M555 325H645" stroke="#ead09a" stroke-width="7"/>
+<path d="M565 385Q600 365 635 385" fill="none" stroke="#f7dda7" stroke-width="5"/>
+<!-- timber posts, carved braces and balcony -->
+<g fill="none" stroke="#6e482f" stroke-width="19" stroke-linecap="round">
+ <path d="M450 260V415M750 260V415M485 245L450 285M715 245L750 285"/>
+</g>
+<g fill="none" stroke="#d3a36a" stroke-width="5"><path d="M450 270V415M750 270V415M465 270L450 290M735 270L750 290"/></g>
+<path d="M390 392Q600 515 820 392" fill="none" stroke="#4a3025" stroke-width="22"/>
+<path d="M390 382Q600 505 820 382" fill="none" stroke="#d5ad73" stroke-width="9"/>
+<g stroke="#b98450" stroke-width="8"><path d="M440 408L440 452M500 438L500 475M560 458L560 490M640 458L640 490M700 438L700 475M770 408L770 452"/></g>
+<!-- ornate timber roof with individual shingle strokes -->
+<path d="M340 275L600 105 865 275L820 305 600 165 385 305Z" fill="#382820" opacity=".8"/>
+<path d="M345 260L600 90 860 260L820 287 600 140 390 287Z" fill="url(#roof)" stroke="#e9c58c" stroke-width="13"/>
+<path d="M365 258L600 105 840 258" fill="none" stroke="#f4d8a0" stroke-width="7"/>
+<g fill="none" stroke="#e6bd83" stroke-opacity=".55" stroke-width="3">
+ <path d="M405 245L600 122 800 245M430 260L600 151 775 260M465 271L600 184 740 271"/>
+ <path d="M470 190L490 210M510 164L530 184M550 140L570 160M630 160L650 180M680 190L700 210M730 220L750 240"/>
+</g>
+<!-- small roof finial -->
+<path d="M600 88V52M588 63L600 42 612 63" stroke="#e4c38d" stroke-width="7" fill="none"/>
+<!-- independent trees on the garden island -->
+<use xlink:href="#tree" transform="translate(265 420) scale(.95)"/>
+<use xlink:href="#tree" transform="translate(900 405) scale(1.05)"/>
+<use xlink:href="#tree" transform="translate(350 340) scale(.72)"/>
+<use xlink:href="#tree" transform="translate(820 335) scale(.72)"/>
+<!-- foreground fern fronds -->
+<g fill="none" stroke="#9bb66d" stroke-width="6" stroke-linecap="round">
+ <path d="M20 660Q95 565 155 590M15 670Q90 620 145 635M1180 670Q1100 570 1040 590M1190 665Q1110 620 1055 640"/>
+</g>
+<g fill="#759957">
+ <path d="M45 645Q20 610 12 590Q50 603 45 645ZM70 625Q55 580 65 560Q93 594 70 625ZM95 610Q90 565 110 550Q125 590 95 610ZM1150 645Q1180 610 1188 590Q1150 603 1150 645ZM1125 625Q1140 580 1130 560Q1102 594 1125 625ZM1100 610Q1105 565 1085 550Q1070 590 1100 610Z"/>
+</g>
+<!-- flower beds, moss and tiny mushrooms -->
+<g><use xlink:href="#flower" transform="translate(200 545) scale(1.2)"/><use xlink:href="#flower" transform="translate(235 555) scale(.9)"/><use xlink:href="#flower" transform="translate(970 485) scale(1.1)"/><use xlink:href="#flower" transform="translate(1000 470) scale(.8)"/><use xlink:href="#flower" transform="translate(340 475) scale(.75)"/><use xlink:href="#flower" transform="translate(850 510) scale(.8)"/></g>
+<g fill="#e7d5a1"><circle cx="175" cy="560" r="4"/><circle cx="260" cy="570" r="3"/><circle cx="930" cy="510" r="4"/><circle cx="1020" cy="500" r="3"/><circle cx="315" cy="510" r="3"/></g>
+<!-- lantern pools and warm windows -->
+<g><circle cx="450" cy="285" r="90" fill="url(#lantern)" filter="url(#glow)"/><circle cx="750" cy="285" r="90" fill="url(#lantern)" filter="url(#glow)"/>
+ <path d="M437 260V285M463 260V285" stroke="#4b3326" stroke-width="5"/><path d="M435 285H465L460 320H440Z" fill="#dcae69" stroke="#6a452e" stroke-width="5"/><path d="M737 260V285M763 260V285" stroke="#4b3326" stroke-width="5"/><path d="M735 285H765L760 320H740Z" fill="#dcae69" stroke="#6a452e" stroke-width="5"/>
+ <circle cx="450" cy="300" r="15" fill="#fff1b5"/><circle cx="750" cy="300" r="15" fill="#fff1b5"/>
+</g>
+<!-- painterly light, leaf speckles and atmospheric finishing -->
+<path d="M820 0L1030 0 850 480 700 480Z" fill="#fff0bf" opacity=".08"/>
+<path d="M930 0L1070 0 940 410 840 410Z" fill="#fff0bf" opacity=".07"/>
+<g fill="#f6e3ad" opacity=".8"><circle cx="285" cy="285" r="3"/><circle cx="315" cy="255" r="2"/><circle cx="890" cy="260" r="3"/><circle cx="940" cy="300" r="2"/><circle cx="180" cy="420" r="3"/><circle cx="1040" cy="420" r="3"/><circle cx="575" cy="520" r="3"/><circle cx="655" cy="545" r="2"/></g>
+<rect width="1200" height="680" fill="url(#grain)" opacity=".42"/>
 </svg>
