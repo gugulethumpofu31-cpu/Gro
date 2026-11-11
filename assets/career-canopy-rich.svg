@@ -84,6 +84,40 @@
 <g><use href="#leaflet" transform="translate(95 820) scale(2.3)"/><use href="#leaflet" transform="translate(210 855) scale(1.9)"/><use href="#leaflet" transform="translate(1450 840) scale(2.2)"/><use href="#leaflet" transform="translate(1350 860) scale(1.7)"/></g>
 <g fill="#df6ba9"><use href="#flower" transform="translate(115 760) scale(1.4)"/><use href="#flower" transform="translate(190 820) scale(1.2)"/><use href="#flower" transform="translate(1450 775) scale(1.4)"/><use href="#flower" transform="translate(1360 820) scale(1.1)"/></g>
 <g fill="#f5d28a"><circle cx="250" cy="680" r="5"/><circle cx="290" cy="760" r="4"/><circle cx="1320" cy="750" r="5"/><circle cx="1380" cy="610" r="4"/><circle cx="1050" cy="330" r="4"/><circle cx="600" cy="380" r="4"/></g>
+
+<!-- hand-painted foliage, moss, bark grain and layered botanical detail -->
+<g opacity=".72" filter="url(#soft)">
+ <ellipse cx="115" cy="250" rx="210" ry="95" fill="#8ba968"/><ellipse cx="420" cy="115" rx="180" ry="75" fill="#9bb875"/><ellipse cx="760" cy="80" rx="240" ry="85" fill="#6f9a5e"/><ellipse cx="1190" cy="95" rx="230" ry="90" fill="#9ab46d"/><ellipse cx="1510" cy="300" rx="190" ry="95" fill="#789b5e"/>
+ <ellipse cx="190" cy="700" rx="180" ry="70" fill="#527a4e"/><ellipse cx="1390" cy="720" rx="210" ry="85" fill="#456d47"/>
+</g>
+<g fill="none" stroke-linecap="round" opacity=".65">
+ <path d="M80 0Q145 150 95 285T150 485" stroke="#a77a53" stroke-width="16"/><path d="M430 0Q380 125 455 230T420 405" stroke="#b18158" stroke-width="12"/><path d="M1020 0Q970 145 1055 250T1015 420" stroke="#9e704b" stroke-width="15"/><path d="M1510 0Q1450 155 1520 260T1480 420" stroke="#a77b51" stroke-width="14"/>
+ <path d="M80 80Q160 120 210 210M430 100Q510 145 560 220M1020 100Q1100 145 1150 230M1510 90Q1430 145 1390 230" stroke="#d5ae79" stroke-width="5" opacity=".55"/>
+</g>
+<!-- individually painted leaf clusters -->
+<g opacity=".95">
+ <use href="#leaflet" transform="translate(35 220) rotate(-28) scale(2.1)"/><use href="#leaflet" transform="translate(180 100) rotate(25) scale(1.8)"/><use href="#leaflet" transform="translate(365 150) rotate(-18) scale(1.6)"/><use href="#leaflet" transform="translate(500 65) rotate(30) scale(1.9)"/><use href="#leaflet" transform="translate(650 125) rotate(-12) scale(1.7)"/><use href="#leaflet" transform="translate(890 95) rotate(20) scale(1.9)"/><use href="#leaflet" transform="translate(1080 145) rotate(-25) scale(1.8)"/><use href="#leaflet" transform="translate(1270 90) rotate(25) scale(1.9)"/><use href="#leaflet" transform="translate(1480 190) rotate(-18) scale(2.2)"/>
+ <use href="#leaflet" transform="translate(55 760) rotate(10) scale(2.5)"/><use href="#leaflet" transform="translate(160 835) rotate(-22) scale(2.1)"/><use href="#leaflet" transform="translate(1450 790) rotate(20) scale(2.4)"/><use href="#leaflet" transform="translate(1340 855) rotate(-18) scale(2.1)"/>
+</g>
+<!-- mossy bark highlights and root tendrils -->
+<g fill="none" stroke-linecap="round">
+ <path d="M40 560Q105 650 55 900M170 620Q130 730 220 900M340 650Q300 770 365 900" stroke="#b48a5d" stroke-width="13" opacity=".42"/>
+ <path d="M1380 600Q1320 730 1400 900M1510 590Q1460 740 1540 900" stroke="#b48a5d" stroke-width="12" opacity=".4"/>
+ <path d="M0 855Q160 800 270 870T520 870M1120 880Q1320 805 1600 860" stroke="#9eb878" stroke-width="20" opacity=".28"/>
+</g>
+<!-- pavilion carved timber detail -->
+<g fill="none" stroke-linecap="round">
+ <path d="M280 590Q800 525 1320 590M300 612Q800 555 1300 612" stroke="#f0cf91" stroke-width="5" opacity=".7"/>
+ <path d="M415 540L415 690M1185 540L1185 690M455 540L455 690M1145 540L1145 690" stroke="#d7a86b" stroke-width="5" opacity=".5"/>
+ <path d="M470 700Q800 760 1130 700M520 720Q800 770 1080 720" stroke="#f0d29a" stroke-width="4" opacity=".45"/>
+ <path d="M355 570Q800 500 1245 570" stroke="#f7dca5" stroke-width="6" opacity=".55"/>
+</g>
+<!-- small flower pots, climbing blooms and fireflies -->
+<g>
+ <path d="M315 730L355 730L348 785L322 785Z" fill="#a9654d" stroke="#d6a66b" stroke-width="5"/><use href="#leaflet" transform="translate(335 730) scale(.7)"/><use href="#flower" transform="translate(335 700) scale(.7)"/>
+ <path d="M1260 735L1300 735L1293 790L1267 790Z" fill="#a9654d" stroke="#d6a66b" stroke-width="5"/><use href="#leaflet" transform="translate(1280 735) scale(.8)"/><use href="#flower" transform="translate(1280 705) scale(.75)"/>
+ <g fill="#fff0ae"><circle cx="250" cy="490" r="4"/><circle cx="290" cy="455" r="3"/><circle cx="610" cy="380" r="4"/><circle cx="930" cy="350" r="3"/><circle cx="1320" cy="500" r="4"/><circle cx="1410" cy="570" r="3"/><circle cx="760" cy="820" r="4"/></g>
+</g>
 <!-- painterly texture glaze -->
 <rect width="1600" height="900" filter="url(#grain)" opacity=".18"/><rect width="1600" height="900" fill="url(#grainlines)" opacity=".25"/>
 </svg>
