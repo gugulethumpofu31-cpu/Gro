@@ -1,1 +1,72 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520"><defs><linearGradient id="wall" y2="1"><stop stop-color="#dce5c9"/><stop offset="1" stop-color="#809b78"/></linearGradient><linearGradient id="wood" y2="1"><stop stop-color="#c28d53"/><stop offset="1" stop-color="#5a3928"/></linearGradient></defs><rect width="1200" height="520" fill="#66503a"/><rect width="1200" height="345" fill="url(#wall)"/><path d="M0 350H1200V520H0Z" fill="#745039"/><path d="M0 370H1200M0 440H1200M0 505H1200" stroke="#d4ad70" stroke-width="8"/><rect x="85" y="65" width="300" height="220" rx="12" fill="#4c392c" stroke="#d2aa6c" stroke-width="14"/><rect x="108" y="88" width="254" height="174" fill="#a8c9b5"/><path d="M120 225L185 150 245 195 320 125" fill="none" stroke="#577a5e" stroke-width="8"/><rect x="810" y="65" width="300" height="220" rx="12" fill="#4c392c" stroke="#d2aa6c" stroke-width="14"/><rect x="833" y="88" width="254" height="174" fill="#a8c9b5"/><path d="M845 225L910 150 970 195 1045 125" fill="none" stroke="#577a5e" stroke-width="8"/><path d="M310 325L890 325 1010 420 190 420Z" fill="url(#wood)" stroke="#e1bf83" stroke-width="13"/><path d="M260 420V510M940 420V510" stroke="#493326" stroke-width="25"/><rect x="475" y="270" width="250" height="55" rx="9" fill="#e8d5a8" stroke="#785138" stroke-width="9"/><path d="M500 282H700" stroke="#a87545" stroke-width="6"/><rect x="560" y="245" width="80" height="25" rx="5" fill="#415a4b"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520">
+<defs>
+ <linearGradient id="wall" x2="0" y2="1"><stop stop-color="#e3d8b5"/><stop offset=".55" stop-color="#a9bd9b"/><stop offset="1" stop-color="#627d60"/></linearGradient>
+ <linearGradient id="timber" x2="0" y2="1"><stop stop-color="#b98755"/><stop offset=".5" stop-color="#71472f"/><stop offset="1" stop-color="#392b25"/></linearGradient>
+ <linearGradient id="desk" x2="0" y2="1"><stop stop-color="#d6a56b"/><stop offset=".25" stop-color="#95613b"/><stop offset="1" stop-color="#513629"/></linearGradient>
+ <linearGradient id="window" x2="0" y2="1"><stop stop-color="#e8c58b"/><stop offset=".4" stop-color="#8fb5a0"/><stop offset="1" stop-color="#345d46"/></linearGradient>
+ <radialGradient id="lamp"><stop stop-color="#fff0b7" stop-opacity=".85"/><stop offset="1" stop-color="#ffda87" stop-opacity="0"/></radialGradient>
+ <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="22"/></filter>
+ <pattern id="woodgrain" width="100" height="24" patternUnits="userSpaceOnUse"><path d="M0 7Q28 0 52 7T100 7M0 18Q25 12 50 18T100 18" fill="none" stroke="#f3d29a" stroke-opacity=".15" stroke-width="2"/></pattern>
+</defs>
+<!-- warm timber study, open to the forest -->
+<rect width="1200" height="520" fill="#59402e"/>
+<rect width="1200" height="370" fill="url(#wall)"/>
+<path d="M0 0H1200V38Q1000 70 800 34T400 40T0 34Z" fill="#284b37"/>
+<path d="M0 365H1200V520H0Z" fill="url(#timber)"/>
+<path d="M0 385H1200M0 455H1200M0 510H1200" stroke="#e0bd80" stroke-width="8" opacity=".8"/>
+<path d="M0 390H1200V520H0Z" fill="url(#woodgrain)"/>
+<!-- great window, forest beyond -->
+<rect x="360" y="48" width="480" height="260" rx="9" fill="#493326" stroke="#d2a76b" stroke-width="18"/>
+<rect x="382" y="70" width="436" height="216" fill="url(#window)"/>
+<path d="M382 210L450 145 515 210 580 125 650 210 720 150 818 220V286H382Z" fill="#496d4c"/>
+<path d="M382 240Q490 185 580 235T818 225V286H382Z" fill="#2c5840"/>
+<g fill="#31563a"><circle cx="430" cy="150" r="50"/><circle cx="490" cy="120" r="42"/><circle cx="720" cy="140" r="58"/><circle cx="780" cy="175" r="45"/></g>
+<path d="M600 70V286M382 180H818" stroke="#e0c38e" stroke-width="12"/>
+<!-- window curtains -->
+<path d="M345 35Q390 100 365 310L330 325Q350 190 310 50Z" fill="#78503b" stroke="#c99c64" stroke-width="7"/>
+<path d="M855 35Q815 100 835 310L870 325Q850 190 890 50Z" fill="#78503b" stroke="#c99c64" stroke-width="7"/>
+<!-- left built-in shelves -->
+<rect x="38" y="55" width="235" height="285" rx="8" fill="#493126" stroke="#c79a61" stroke-width="12"/>
+<path d="M48 145H263M48 240H263" stroke="#dfbd83" stroke-width="12"/>
+<g fill="#c48c55" stroke="#edcf99" stroke-width="2">
+ <rect x="65" y="75" width="22" height="58"/><rect x="94" y="83" width="28" height="50"/><rect x="130" y="69" width="25" height="64"/><rect x="164" y="80" width="22" height="53"/><rect x="195" y="72" width="30" height="61"/>
+ <rect x="62" y="160" width="27" height="72"/><rect x="99" y="170" width="22" height="62"/><rect x="130" y="155" width="30" height="77"/><rect x="171" y="165" width="25" height="67"/><rect x="207" y="158" width="30" height="74"/>
+ <rect x="64" y="255" width="26" height="70"/><rect x="100" y="265" width="24" height="60"/><rect x="136" y="250" width="27" height="75"/><rect x="175" y="262" width="25" height="63"/><rect x="210" y="250" width="27" height="75"/>
+</g>
+<!-- right pinboard with plans -->
+<rect x="925" y="65" width="235" height="230" rx="8" fill="#6a4932" stroke="#d5ae74" stroke-width="13"/>
+<rect x="944" y="84" width="197" height="192" fill="#ddc99b"/>
+<path d="M965 245L1005 160 1050 205 1090 130 1120 185" fill="none" stroke="#52765b" stroke-width="7"/>
+<g fill="#a64f75" stroke="#f7e0ad" stroke-width="3"><circle cx="1005" cy="160" r="10"/><circle cx="1050" cy="205" r="10"/><circle cx="1090" cy="130" r="10"/></g>
+<g fill="#80563c"><rect x="970" y="105" width="65" height="7" rx="3"/><rect x="1050" y="105" width="70" height="7" rx="3"/></g>
+<!-- hanging lamp -->
+<path d="M890 0V100" stroke="#51382a" stroke-width="7"/><path d="M860 98H920L910 165H870Z" fill="#c18a4e" stroke="#63442e" stroke-width="7"/>
+<circle cx="890" cy="150" r="75" fill="url(#lamp)" filter="url(#soft)"/><path d="M880 110H900V150H880Z" fill="#fff0b5"/>
+<!-- plant by the window -->
+<path d="M1080 335L1145 335L1135 395H1090Z" fill="#a95e49" stroke="#e1b878" stroke-width="6"/>
+<g fill="#6f9857" stroke="#b7c77e" stroke-width="3"><path d="M1110 340Q1040 285 1055 245Q1115 265 1110 340Z"/><path d="M1115 340Q1110 255 1165 230Q1180 295 1115 340Z"/><path d="M1110 340Q1150 285 1190 295Q1175 350 1110 340Z"/></g>
+<!-- writing desk and leather blotter -->
+<ellipse cx="610" cy="438" rx="360" ry="60" fill="#211c18" opacity=".45" filter="url(#shadow)"/>
+<path d="M245 325L920 325L1045 405L120 405Z" fill="url(#desk)" stroke="#e2bd7c" stroke-width="13"/>
+<path d="M270 342L895 342L970 390L195 390Z" fill="#53392b" stroke="#c28e56" stroke-width="5"/>
+<path d="M290 350L880 350L940 383L230 383Z" fill="#30483a" opacity=".85"/>
+<path d="M200 405V500M940 405V500" stroke="#4a3024" stroke-width="28"/>
+<path d="M200 405V500M940 405V500" stroke="#c18d55" stroke-width="5" opacity=".7"/>
+<!-- open ledger and papers -->
+<path d="M470 320L600 300L685 330L550 350Z" fill="#f0dfb9" stroke="#7c593c" stroke-width="5"/>
+<path d="M600 300L685 330L670 355L550 350Z" fill="#d5c19a" stroke="#7c593c" stroke-width="4"/>
+<path d="M490 326L575 315M500 336L570 326M615 315L665 332" stroke="#98714e" stroke-width="3"/>
+<!-- ink pot and quill -->
+<path d="M735 305Q750 290 765 305L760 338H740Z" fill="#273e38" stroke="#d6b779" stroke-width="5"/>
+<path d="M750 300Q785 250 820 225Q802 275 755 315Z" fill="#e8d2a0" stroke="#76513a" stroke-width="4"/>
+<path d="M750 305L820 225" stroke="#49372b" stroke-width="3"/>
+<!-- small task folio -->
+<rect x="340" y="330" width="85" height="54" rx="4" fill="#e6c98d" stroke="#785138" stroke-width="4"/>
+<path d="M355 345H410M355 358H400M355 371H390" stroke="#936849" stroke-width="3"/>
+<!-- stool -->
+<path d="M520 405L700 405L675 465H545Z" fill="#68452f" stroke="#d4aa70" stroke-width="8"/>
+<path d="M550 465V510M670 465V510" stroke="#4a3025" stroke-width="18"/>
+<!-- painterly foreground glaze -->
+<rect width="1200" height="520" fill="url(#woodgrain)" opacity=".35"/>
+</svg>
