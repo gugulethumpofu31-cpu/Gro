@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#263c43"/><stop offset=".48" stop-color="#d68b69"/><stop offset="1" stop-color="#f4c77d"/></linearGradient>
+ <linearGradient id="wood" x2="0" y2="1"><stop stop-color="#bd8951"/><stop offset=".5" stop-color="#70472f"/><stop offset="1" stop-color="#392b25"/></linearGradient>
+ <linearGradient id="leaf" x2="1" y2="1"><stop stop-color="#9ab56c"/><stop offset=".45" stop-color="#426b49"/><stop offset="1" stop-color="#183c32"/></linearGradient>
+ <radialGradient id="sun"><stop stop-color="#fff6c8" stop-opacity=".95"/><stop offset="1" stop-color="#f6b66b" stop-opacity="0"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
+ <filter id="shadow"><feGaussianBlur stdDeviation="12"/></filter>
+</defs>
+<rect width="1600" height="900" fill="url(#sky)"/>
+<circle cx="1370" cy="270" r="180" fill="url(#sun)"/>
+<circle cx="1370" cy="270" r="55" fill="#ffe8ad" opacity=".85"/>
+<path d="M0 470L150 360 280 430 420 300 570 430 720 335 880 450 1040 320 1200 440 1370 330 1600 440V900H0Z" fill="#536f59" opacity=".72"/>
+<path d="M0 565Q250 430 520 545T1050 530T1600 500V900H0Z" fill="#294c3c"/>
+<path d="M0 640Q270 510 530 625T1050 620T1600 580V900H0Z" fill="#416b4c"/>
+<path d="M1330 460Q1410 550 1510 460L1600 500V900H1380Z" fill="#e2b47b" opacity=".5"/>
+<path d="M1440 420Q1500 510 1540 560T1600 650" fill="none" stroke="#d9e9db" stroke-width="24" opacity=".7"/>
+<path d="M1450 450Q1510 540 1550 590T1600 680" fill="none" stroke="#fff" stroke-width="7" opacity=".65"/>
+<!-- ancient canopy trunks -->
+<path d="M40 900Q120 530 30 0L160 0Q140 490 230 900Z" fill="#392e28"/>
+<path d="M250 900Q340 560 260 0L390 0Q365 530 450 900Z" fill="#4d3829"/>
+<path d="M1350 900Q1450 530 1370 0L1500 0Q1480 500 1580 900Z" fill="#382d26"/>
+<path d="M0 190Q240 -80 510 130T1040 90T1600 160V0H0Z" fill="#142f2b"/>
+<g fill="url(#leaf)">
+ <ellipse cx="120" cy="90" rx="230" ry="150"/><ellipse cx="370" cy="40" rx="210" ry="135"/><ellipse cx="700" cy="55" rx="240" ry="130"/><ellipse cx="1050" cy="30" rx="240" ry="145"/><ellipse cx="1430" cy="100" rx="250" ry="170"/>
+ <ellipse cx="30" cy="300" rx="180" ry="125"/><ellipse cx="1550" cy="330" rx="200" ry="120"/>
+</g>
+<g fill="#b14b91" opacity=".95">
+ <path d="M280 0Q250 110 330 170T300 320" fill="none" stroke="#785044" stroke-width="8"/><path d="M280 100l-30 15 25 18-25 18 35 14 20-18-25-16z"/>
+ <path d="M520 0Q490 120 550 190T520 360" fill="none" stroke="#74503d" stroke-width="7"/>
+ <path d="M1120 0Q1080 130 1160 210T1130 340" fill="none" stroke="#74503d" stroke-width="8"/>
+</g>
+<g fill="#db75b6"><circle cx="250" cy="150" r="12"/><circle cx="300" cy="210" r="13"/><circle cx="520" cy="150" r="12"/><circle cx="550" cy="230" r="14"/><circle cx="1120" cy="180" r="14"/><circle cx="1170" cy="250" r="12"/><circle cx="1460" cy="180" r="13"/></g>
+<!-- pavilion shadow and treehouse -->
+<ellipse cx="820" cy="730" rx="550" ry="75" fill="#142e28" opacity=".55" filter="url(#shadow)"/>
+<path d="M400 570Q780 430 1190 570L1250 690Q800 760 350 690Z" fill="#47372c" stroke="#d5ac6f" stroke-width="12"/>
+<path d="M370 570L800 260 1240 570Z" fill="url(#wood)" stroke="#d9b77d" stroke-width="15"/>
+<path d="M440 555L800 315 1170 555" fill="none" stroke="#e6c58c" stroke-width="13"/>
+<path d="M470 575V690M1130 575V690M600 510V690M1000 510V690" stroke="#513727" stroke-width="24"/>
+<rect x="470" y="545" width="680" height="145" rx="10" fill="url(#wood)" stroke="#d2a56a" stroke-width="14"/>
+<rect x="515" y="575" width="150" height="80" fill="#a7c7b4" stroke="#e9d0a0" stroke-width="12"/>
+<rect x="955" y="575" width="150" height="80" fill="#a7c7b4" stroke="#e9d0a0" stroke-width="12"/>
+<path d="M740 690V585Q740 530 800 530Q860 530 860 585V690Z" fill="#392b26" stroke="#d7b478" stroke-width="12"/>
+<path d="M320 690L800 790 1280 690" fill="none" stroke="#bd925d" stroke-width="22"/>
+<path d="M360 720L800 810 1240 720" fill="none" stroke="#523b2b" stroke-width="10"/>
+<!-- wraparound bridge -->
+<path d="M1080 690Q1280 760 1500 650" fill="none" stroke="#bc8b52" stroke-width="28"/>
+<path d="M1080 660Q1280 730 1500 620M1080 720Q1280 790 1500 680" fill="none" stroke="#5b412c" stroke-width="9"/>
+<g stroke="#d9b47a" stroke-width="8"><path d="M1130 680v62M1200 700v62M1280 705v62M1360 690v62M1440 660v62"/></g>
+<!-- stairs -->
+<path d="M650 690L560 830 840 830 890 690Z" fill="#785236" stroke="#d2a66e" stroke-width="9"/>
+<path d="M625 730H870M605 765H855M585 800H845" stroke="#d9b77d" stroke-width="12"/>
+<!-- planning desk -->
+<path d="M720 620L890 590 1010 625 835 660Z" fill="#d6ae75" stroke="#533a28" stroke-width="9"/>
+<path d="M755 645V715M970 640V710" stroke="#543b29" stroke-width="18"/>
+<rect x="805" y="595" width="90" height="9" fill="#f5e5be"/>
+<!-- bookcases -->
+<rect x="535" y="450" width="165" height="115" fill="#543a2b" stroke="#c89b61" stroke-width="10"/>
+<path d="M545 490H690M545 530H690" stroke="#d5b27b" stroke-width="7"/>
+<g fill="#d2a66e"><rect x="553" y="460" width="15" height="28"/><rect x="573" y="454" width="18" height="34"/><rect x="597" y="463" width="13" height="25"/><rect x="618" y="451" width="20" height="37"/><rect x="646" y="459" width="16" height="29"/><rect x="555" y="495" width="18" height="32"/><rect x="580" y="500" width="13" height="27"/><rect x="601" y="494" width="19" height="33"/><rect x="628" y="501" width="16" height="26"/></g>
+<!-- strategy wall -->
+<rect x="890" y="445" width="205" height="125" rx="8" fill="#6e482e" stroke="#d8b77d" stroke-width="10"/>
+<rect x="905" y="460" width="175" height="95" fill="#d7c18d"/>
+<path d="M920 535L955 485 1000 510 1035 475 1060 525" fill="none" stroke="#8e5a3b" stroke-width="5"/>
+<g fill="#8d4e68"><circle cx="955" cy="485" r="7"/><circle cx="1000" cy="510" r="7"/><circle cx="1035" cy="475" r="7"/></g>
+<!-- lanterns -->
+<g stroke="#493529" stroke-width="7" fill="#f5bd5d"><path d="M430 260V330M410 330H450L445 390H415Z"/><path d="M1180 300V360M1160 360H1200L1195 420H1165Z"/></g>
+<g fill="#ffe5a0" opacity=".75" filter="url(#glow)"><circle cx="430" cy="360" r="48"/><circle cx="1180" cy="390" r="48"/></g>
+<g fill="#f7dfaa"><circle cx="430" cy="360" r="12"/><circle cx="1180" cy="390" r="12"/></g>
+<!-- meeting nook -->
+<ellipse cx="830" cy="850" rx="230" ry="45" fill="#5d3d55" stroke="#d6b36f" stroke-width="8"/>
+<path d="M690 830Q830 790 970 830L950 870H710Z" fill="#b17c61" stroke="#d6b36f" stroke-width="7"/>
+<g fill="#a64f8b"><circle cx="390" cy="790" r="18"/><circle cx="430" cy="825" r="14"/><circle cx="1240" cy="780" r="20"/><circle cx="1280" cy="820" r="15"/></g>
+</svg>
