@@ -226,6 +226,17 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 /* Banga lives inside every biome */
 .biome-banga{position:absolute;z-index:8;left:69%;top:28%;width:112px;height:112px;pointer-events:none;animation:bangaBiomeFlight 13s ease-in-out infinite}
 .banga-fairy-body{position:absolute;left:34px;top:25px;font-size:39px;filter:drop-shadow(0 5px 5px #263c3b66);animation:bangaBob 1.7s ease-in-out infinite}
+/* Banga's illustrated identity */
+.biome-banga{width:154px;height:184px;left:73%;top:10%}
+.banga-fairy-body{left:0;top:0;width:142px;height:174px;display:block;animation:bangaBob 2.6s ease-in-out infinite;filter:drop-shadow(0 9px 12px #172c2b88)}
+.banga-fairy-body img{display:block;width:100%;height:100%;object-fit:contain}
+.biome-banga .banga-fairy-wings{display:none}
+.banga-name{top:158px;left:49px;font-size:12px;letter-spacing:.5px}
+.banga-speech{top:12px;right:0}
+.companion-orb{overflow:hidden}
+.companion-orb img{width:82px;height:92px;object-fit:contain;align-self:end;margin-top:8px}
+@media(max-width:700px){.biome-banga{width:118px;height:146px;left:70%;top:9%}.banga-fairy-body{width:112px;height:137px}.banga-name{top:126px;left:38px;font-size:10px}}
+
 .banga-fairy-wings{position:absolute;top:24px;color:#fff4d0;font-size:27px;text-shadow:0 0 12px #fff2c7;transform-origin:center;animation:bangaWingBeat .2s ease-in-out infinite alternate}
 .wing-left{left:18px}.wing-right{left:65px;transform:scaleX(-1);animation-delay:.08s}
 .banga-name{position:absolute;top:70px;left:35px;color:#fff9e8;font:bold 11px Georgia,serif;text-shadow:0 2px 5px #25463e}
@@ -639,7 +650,7 @@ ${paths}${spotSVG}
 </svg>
 <div class="world-legend"><span>✧ <b>${doneTotal}</b> intentions gathered</span><span>◌ <b>${openTotal}</b> still growing</span><span>🧚🏾‍♀️ Banga is ${ph==='night'?'dreaming':('tending '+bangaTarget.name+' first')}</span></div>
 </section>
-<section class="world-companion"><div class="companion-orb">🧚🏾‍♀️<i>✦</i></div><div class="companion-copy"><div class="world-kicker">BANGA · YOUR GARDEN COMPANION</div><p>${bangaLine}</p><button class="world-talk" data-banga="garden">Talk to Banga <span>↗</span></button><div class="banga-talk" id="bangaTalk">${escapeHTML(phase()==='night'?'I am dreaming of the garden tonight. Leave a little note for the morning.':openTotal?'Let us tend one thing at a time. Which path feels right?':'Look at all that has grown. What would you like to nurture next?')}</div></div></section>
+<section class="world-companion"><div class="companion-orb"><img src="assets/banga-character.svg" alt=""><i>✦</i></div><div class="companion-copy"><div class="world-kicker">BANGA · YOUR GARDEN COMPANION</div><p>${bangaLine}</p><button class="world-talk" data-banga="garden">Talk to Banga <span>↗</span></button><div class="banga-talk" id="bangaTalk">${escapeHTML(phase()==='night'?'I am dreaming of the garden tonight. Leave a little note for the morning.':openTotal?'Let us tend one thing at a time. Which path feels right?':'Look at all that has grown. What would you like to nurture next?')}</div></div></section>
 <section class="world-tools"><button data-page="planner">Open planner</button><button data-page="growth">Growth observatory</button><button data-page="journal">Garden journal</button></section>`;
 }else if(page==='planner'){html=`<h1>Your weekly planner</h1><p>Make space for what matters. Tasks are organised by due date.</p><button class="primary" data-add="career">+ Add task</button><div class="panel"><h2>To tend</h2>${taskList(open)}</div><div class="panel"><h2>Completed</h2>${taskList(all.filter(t=>t.done))}</div>`}else if(page==='seeds'){const p=PLOTS.find(x=>x[0]===selectedPlot);html=`<h1>${p?p[2]+' '+p[1]:'Your seed bank'}</h1><p>Every intention begins as a seed. Completed tasks water your plot.</p><div class="row"><button class="primary" data-add="${p?p[0]:'career'}">+ Plant a seed</button>${p?'<button class="secondary" data-clearplot>View all plots</button>':''}</div><div class="panel"><h2>${p?'This plot’s intentions':'All your seeds'}</h2>${taskList(p?all.filter(t=>t.plot===p[0]):all)}</div>${p?`<div class="panel"><h2>Growth</h2><p>${count(p[0])} tasks completed. Your garden grows with accumulated care, never shrinks through inactivity.</p></div>`:''}` }else if(page==='plot'){
 const p=PLOTS.find(x=>x[0]===selectedPlot),m=PLOT_META[selectedPlot],pd=ensurePlotData(selectedPlot),items=plotTasks(selectedPlot),openItems=items.filter(t=>!t.done),doneItems=items.filter(t=>t.done);
@@ -689,14 +700,14 @@ const biomeHabitsPending=pd.habits.filter(h=>!(h.completedDates||[]).includes(da
 const bangaBiomeNote=phase()==='night'?'The garden is quiet now. I am settling among the flowers to dream.':biomeOverdue.length?'I noticed '+biomeOverdue.length+' overdue '+(biomeOverdue.length===1?'task':'tasks')+' here. Shall we choose one gentle next step?':biomeOpenTasks.length?'There is '+biomeOpenTasks.length+' growing '+(biomeOpenTasks.length===1?'task':'tasks')+' here. I can keep you company while you tend one.':biomeOpenGoals.length?'Your goals are taking root. What small action could help one of them grow today?':biomeHabitsPending.length?'A little ritual is waiting here. Would you like to check in on a habit?':biomeOpenMilestones.length?'You are moving towards your next milestone. Keep the pace kind and steady.':'This little corner is flourishing. Take a moment to notice what you have nurtured.';
 const bangaBiomeMood=phase()==='night'?'resting':biomeOverdue.length?'thoughtful':biomeOpenTasks.length?'attentive':'cheerful';
 const bangaExpression=phase()==='night'?'sleeping':biomeOverdue.length?'thinking':biomeOpenTasks.length?'advising':'celebrating';
-const biomeScene=`<section class="biome-scene biome-${selectedPlot}"><div class="career-art-background" aria-hidden="true"></div><div class="career-3d-world" aria-label="Interactive three-dimensional Canopy garden"></div><img class="career-isometric-art" src="assets/career-isometric-world.svg" alt="" aria-hidden="true"><div class="career-camera-controls" aria-label="Change garden viewing angle"><button type="button" data-world-turn="-90" aria-label="Rotate view anticlockwise">↶</button><span>VIEW</span><button type="button" data-world-turn="90" aria-label="Rotate view clockwise">↷</button></div>
+const biomeScene=`<section class="biome-scene biome-${selectedPlot}"><div class="career-art-background" aria-hidden="true"></div><div class="career-3d-world" aria-label="Interactive three-dimensional Canopy garden"></div><img class="career-isometric-art" src="assets/career-isometric-world.svg" alt="" aria-hidden="true"><div class="career-camera-controls" aria-label="Change garden viewing angle"><button type="button" data-world-turn="-1" aria-label="Rotate view anticlockwise">↶</button><span>VIEW</span><button type="button" data-world-turn="1" aria-label="Rotate view clockwise">↷</button></div>
 <div class="biome-sky"><span class="biome-sun"></span><span class="biome-cloud c1"></span><span class="biome-cloud c2"></span><span class="biome-skyline"></span></div>
 <div class="biome-hill hill-back"></div><div class="biome-hill hill-front"></div>
 <div class="biome-water"></div><div class="biome-path"></div>
 <div class="biome-tree tree-a">${biome.flora[0]}</div><div class="biome-tree tree-b">${biome.flora[1]}</div><div class="biome-tree tree-c">${biome.flora[2]}</div><div class="biome-tree tree-d">${biome.flora[3]}</div>
 ${architectureHTML}<div class="biome-landmark"><span class="landmark-glow"></span><span class="landmark-icon">${biome.building}</span><strong>${biome.landmark}</strong><small>${biome.feature}</small></div>
 <div class="biome-banga mood-${bangaBiomeMood} expression-${bangaExpression}" data-banga-expression="${bangaExpression}" aria-label="Banga ${bangaExpression} in the ${p[1]} garden">
-<div class="banga-flight-trail"></div><span class="banga-fairy-wings wing-left">✧</span><span class="banga-fairy-wings wing-right">✧</span><span class="banga-fairy-body">🧚🏾‍♀️</span><span class="banga-name">Banga</span>
+<div class="banga-flight-trail"></div><span class="banga-fairy-wings wing-left">✧</span><span class="banga-fairy-wings wing-right">✧</span><span class="banga-fairy-body"><img src="assets/banga-character.svg" alt="Banga, your garden companion"></span><span class="banga-name">Banga</span>
 <button class="banga-speech" data-biome-banga aria-expanded="false" title="Hear what Banga noticed">✦</button>
 <div class="banga-biome-note" id="bangaBiomeNote">${escapeHTML(bangaBiomeNote)}</div>
 </div>
