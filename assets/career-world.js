@@ -186,31 +186,55 @@ const mountCanopy = () => {
   }
   cylinder(pavilion,0,4.05,0,0.075,0.12,0.45,gold,8);
 
-  // Tall old trees: trunks, exposed branches, layered crowns and smaller leaf clusters.
+  // Mature canopy trees: sculpted trunks, branching limbs and individually shaped leaves.
+  const canopyLeafShape = new THREE.Shape();
+  canopyLeafShape.moveTo(0,0);
+  canopyLeafShape.bezierCurveTo(-0.13,0.16,-0.18,0.42,0,0.68);
+  canopyLeafShape.bezierCurveTo(0.18,0.42,0.13,0.16,0,0);
+  const canopyLeafGeometry = new THREE.ShapeGeometry(canopyLeafShape,5);
+  const canopyLeafMaterials = ['#294f38','#376a43','#527f4c','#78975a','#a1ad69'].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:0.94,side:THREE.DoubleSide}));
   function makeTree(x,z,scale=1,kind=0) {
-    const g=new THREE.Group(); g.position.set(x,0,z); g.scale.setScalar(scale); scene.add(g);
-    cylinder(g,0,1.45,0,0.18,0.32,2.9,bark,10);
-    for(let i=0;i<3;i++){
-      const angle=i*2.1+kind;
-      const branch=cylinder(g,Math.cos(angle)*0.25,2.35,Math.sin(angle)*0.25,0.075,0.13,1.55,barkLight,7);
-      branch.rotation.z=Math.cos(angle)*-0.55;
-      branch.rotation.x=Math.sin(angle)*0.55;
+    const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(scale);scene.add(g);
+    cylinder(g,0,1.42,0,0.17,0.31,2.84,bark,11);
+    // Visible roots and tapered limbs create a branching silhouette.
+    for(let i=0;i<5;i++){
+      const a=i*Math.PI*2/5+kind*.38;
+      const root=box(g,Math.cos(a)*.23,.18,Math.sin(a)*.23,.13,.42,.42,bark);
+      root.rotation.y=a;root.rotation.z=Math.cos(a)*.3;
     }
-    const clusters=[
-      [-0.66,3.0,0.12,0.88,0.64,0.82],[-0.12,3.42,-0.25,0.98,0.72,0.9],
-      [0.62,3.05,0.1,0.84,0.65,0.82],[0.05,2.88,0.68,0.82,0.62,0.76],
-      [-0.1,3.88,0.3,0.72,0.62,0.76],[0.55,3.64,-0.42,0.68,0.6,0.72]
-    ];
-    clusters.forEach((c,i)=>sphere(g,c[0],c[1],c[2],c[3],c[4],c[5],[leafDark,leafMid,leafLight,leafMid][(i+kind)%4]));
-    for(let i=0;i<12;i++){
-      const a=i*2.4+kind, r=0.72+(i%3)*0.22;
-      sphere(g,Math.cos(a)*r,3.05+(i%4)*0.24,Math.sin(a)*r,0.17,0.105,0.16,[leafMid,leafLight][i%2]);
+    for(let i=0;i<5;i++){
+      const a=i*2.4+kind*.7;
+      const start=new THREE.Vector3(Math.cos(a)*.04,2.05,Math.sin(a)*.04);
+      const end=new THREE.Vector3(Math.cos(a)*(.72+(i%2)*.18),3.35+(i%3)*.18,Math.sin(a)*(.72+(i%2)*.18));
+      const mid=start.clone().lerp(end,.58);mid.y+=.18;
+      const curve=new THREE.QuadraticBezierCurve3(start,mid,end);
+      add(new THREE.Mesh(new THREE.TubeGeometry(curve,12,.055,7,false),barkLight),g);
     }
-    // Buttress roots make each trunk sit visibly in the terrain.
-    for(let i=0;i<4;i++){
-      const a=i*Math.PI/2;
-      const root=box(g,Math.cos(a)*0.25,0.2,Math.sin(a)*0.25,0.16,0.48,0.48,bark);
-      root.rotation.y=a; root.rotation.z=Math.cos(a)*0.28;
+    // A loose, irregular crown of leaves. Each leaf is real geometry, not a smooth ball.
+    for(let i=0;i<126;i++){
+      const u=((i*37+kind*19)%127)/127;
+      const v=((i*53+kind*11)%131)/131;
+      const theta=u*Math.PI*2;
+      const vertical=(v-.5)*2;
+      const radial=Math.sqrt(Math.max(.04,1-vertical*vertical));
+      const crownX=Math.cos(theta)*(.62+((i*7)%13)*.018)*radial;
+      const crownZ=Math.sin(theta)*(.62+((i*11)%13)*.018)*radial;
+      const crownY=3.15+vertical*.78;
+      const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+kind)%canopyLeafMaterials.length]);
+      leaf.position.set(crownX,crownY,crownZ);
+      leaf.rotation.set((i%7-3)*.24,theta+(i%5)*.3,(i%9-4)*.19);
+      const size=.72+((i*17)%9)*.055;
+      leaf.scale.set(size,size*(.82+((i*3)%5)*.06),size);
+      leaf.castShadow=false;leaf.receiveShadow=false;g.add(leaf);
+    }
+    // Smaller fresh growth catches the light along the outside of the crown.
+    for(let i=0;i<28;i++){
+      const a=i*2.399+kind;
+      const y=2.8+(i%7)*.19;
+      const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+2)%canopyLeafMaterials.length]);
+      leaf.position.set(Math.cos(a)*(.78+(i%3)*.08),y,Math.sin(a)*(.78+(i%3)*.08));
+      leaf.rotation.set(.25*Math.sin(a),a,.35*Math.cos(a));
+      leaf.scale.setScalar(.72);leaf.castShadow=false;g.add(leaf);
     }
     return g;
   }
