@@ -510,6 +510,28 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-career .career-camera-controls{z-index:25}
 .biome-career .biome-caption,.biome-career .biome-actions,.biome-career .place-entry{z-index:15}
 @media(max-width:650px){.biome-career .career-3d-world{inset:0}.biome-career .career-camera-controls{z-index:25}}
+
+/* GRO Canopy visual review · clearer pavilion and non-overlapping waypoints */
+.biome-career .career-hotspot.knowledge{left:25%;top:27%}
+.biome-career .career-hotspot.strategy{right:18%;top:27%}
+.biome-career .career-hotspot.desk{left:48%;top:53%}
+.biome-career .career-hotspot.horizon{right:4%;top:43%}
+.biome-career .career-hotspot.meeting{left:68%;top:68%}
+.biome-career .place-entry{left:19%;right:auto;bottom:22px;top:auto;transform:translateX(-50%);max-width:220px;white-space:normal;text-align:center}
+.biome-career .place-entry:hover{transform:translateX(-50%) translateY(-3px)}
+.biome-career .biome-actions{left:58%;bottom:17px;transform:translateX(-50%);gap:7px}
+.biome-career .biome-actions button{padding:9px 13px}
+.biome-career .career-3d-world{background:linear-gradient(180deg,#a9c0a0 0%,#829b70 64%,#536d4a 100%)}
+@media(max-width:650px){
+ .biome-career .career-hotspot.knowledge{left:8%;top:25%}
+ .biome-career .career-hotspot.strategy{right:3%;top:25%}
+ .biome-career .career-hotspot.desk{left:36%;top:52%}
+ .biome-career .career-hotspot.horizon{right:2%;top:42%}
+ .biome-career .career-hotspot.meeting{left:58%;top:67%}
+ .biome-career .place-entry{left:25%;bottom:15px;max-width:145px;font-size:10px}
+ .biome-career .biome-actions{left:67%;bottom:12px;gap:4px}
+ .biome-career .biome-actions button{padding:7px 8px;font-size:9px}
+}
 </style><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
