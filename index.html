@@ -301,6 +301,30 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-career:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#08281d55,transparent 24%,transparent 78%,#08281d33),linear-gradient(0deg,#09271f44,transparent 30%)}
 .biome-career .biome-banga,.biome-career .career-hotspots,.biome-career .biome-caption,.biome-career .biome-actions,.biome-career .place-entry{position:absolute}
 @media(max-width:650px){.biome-career .career-hotspot{font-size:9px;padding:6px 8px;gap:4px}.biome-career .career-hotspot.knowledge{left:24%;top:27%}.biome-career .career-hotspot.strategy{right:3%;top:27%}.biome-career .career-hotspot.desk{left:42%;top:56%}.biome-career .career-hotspot.horizon{right:2%;top:43%}.biome-career .career-hotspot.meeting{left:39%;top:73%}}
+
+/* GRO 1.6 · Canopy interiors become distinct illustrated spaces */
+.biome-career .place-interior{background:linear-gradient(145deg,#102c22f7,#1c4934f7 55%,#352b27f7);border:1px solid #c7a15d;box-shadow:0 24px 65px #061710aa,inset 0 1px #fff4}
+.biome-career .place-interior .place-heading{color:#f8e5b7;font-family:Georgia,serif;letter-spacing:.3px}
+.biome-career .place-interior .place-description{color:#e7d9bb;max-width:760px}
+.biome-career .place-room{position:relative;overflow:hidden;min-height:260px;border:1px solid #d5b477;border-radius:20px;background-color:#5d4936;box-shadow:inset 0 0 55px #10291e77,0 14px 28px #06170f66}
+.biome-career .place-room:before{content:"";position:absolute;inset:0 0 38%;background:radial-gradient(ellipse at 50% 0%,#f8dda2 0%,#d3b783 38%,#789578 100%);border-bottom:12px solid #513827;box-shadow:inset 0 -12px 24px #1e3d2a66}
+.biome-career .place-room:after{content:"";position:absolute;left:-4%;right:-4%;height:105px;bottom:-43px;background:repeating-linear-gradient(0deg,#69482f 0 9px,#b18a58 10px 13px);border-top:8px solid #e1c18a;box-shadow:0 -5px 14px #201b16aa}
+.biome-career .place-room.library{background:linear-gradient(180deg,#b7c9a9 0 58%,#76583d 59% 100%)}
+.biome-career .place-room.library:before{background:linear-gradient(90deg,#4b392c 0 18%,#d6c294 18% 20%,#d8e1c3 20% 80%,#d6c294 80% 82%,#4b392c 82%);background-size:100% 100%;box-shadow:inset 0 -15px 25px #53694a66}
+.biome-career .place-room.counting{background:linear-gradient(180deg,#8c9a79 0 58%,#60452e 59% 100%)}
+.biome-career .place-room.counting:before{background:radial-gradient(ellipse at 50% 25%,#f8d98d,#a88b59 55%,#4a503b);border-bottom:14px solid #4b3829}
+.biome-career .place-room.timber{background:linear-gradient(180deg,#b4c9b1 0 58%,#79563a 59% 100%)}
+.biome-career .place-room.timber:before{background:linear-gradient(90deg,#715036 0 8%,#e2c795 8% 10%,#c3d2b3 10% 90%,#e2c795 90% 92%,#715036 92%)}
+.biome-career .place-room.wayfinder{background:linear-gradient(180deg,#7c9c9b 0 58%,#5e4b36 59% 100%)}
+.biome-career .place-room.wayfinder:before{background:linear-gradient(180deg,#9bc2c4,#f1c98a 60%,#668b78);border-bottom:12px solid #60452f}
+.biome-career .place-room.rose{background:linear-gradient(180deg,#8fae86 0 58%,#694535 59% 100%)}
+.biome-career .place-room.rose:before{background:radial-gradient(ellipse at 50% 35%,#f1d5bd,#a5b58a 62%,#4b7150);border-bottom:12px solid #5d3d32}
+.biome-career .place-object{position:relative;z-index:2;min-width:125px;min-height:104px;padding:14px 12px;border-radius:15px;background:linear-gradient(145deg,#fff4d8,#d8bd8c);border:1px solid #a9844d;color:#443322;font-family:Georgia,serif;box-shadow:0 10px 18px #18291e66,inset 0 1px #fff;transition:transform .2s}
+.biome-career .place-object:hover{transform:translateY(-5px) rotate(-1deg);box-shadow:0 15px 24px #18291e88}
+.biome-career .place-object span{display:block;font-size:30px;margin-bottom:8px;filter:drop-shadow(0 3px 2px #493b2a55)}
+.biome-career .place-footnote{color:#e6d8b7}
+.biome-career .place-interior .close-place{background:#f1dfb9;color:#493725;border:1px solid #c6a56a}
+@media(max-width:650px){.biome-career .place-room{min-height:220px}.biome-career .place-object{min-width:92px;min-height:88px;padding:9px 7px;font-size:11px}.biome-career .place-object span{font-size:24px}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
