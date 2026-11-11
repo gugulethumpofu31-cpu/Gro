@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 340" role="img" aria-labelledby="title desc">
+<title id="title">Banga, guardian of the GRO garden</title><desc id="desc">A regal African fairy with deep brown skin, long dark locs, gold adornments and emerald botanical clothing.</desc>
+<defs>
+ <linearGradient id="skin" x2="0.8" y2="1"><stop stop-color="#9c6048"/><stop offset=".55" stop-color="#75402f"/><stop offset="1" stop-color="#4b2928"/></linearGradient>
+ <linearGradient id="cloth" x2="1" y2="1"><stop stop-color="#9ab77b"/><stop offset=".42" stop-color="#37694c"/><stop offset="1" stop-color="#173e37"/></linearGradient>
+ <linearGradient id="gold" x2="0" y2="1"><stop stop-color="#fff0ad"/><stop offset=".45" stop-color="#d6ad59"/><stop offset="1" stop-color="#8f642f"/></linearGradient>
+ <radialGradient id="wing"><stop stop-color="#fff8db" stop-opacity=".82"/><stop offset="1" stop-color="#c9e4d1" stop-opacity=".12"/></radialGradient>
+ <filter id="glow"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<!-- luminous moth wings -->
+<g opacity=".82" stroke="#f5e9c6" stroke-width="2">
+ <path d="M112 176C67 115 19 123 28 174c7 36 51 45 84 22-31 42-11 75 18 48 16-16 13-42 0-68Z" fill="url(#wing)"/>
+ <path d="M148 176c45-61 93-53 84-2-7 36-51 45-84 22 31 42 11 75-18 48-16-16-13-42 0-68Z" fill="url(#wing)"/>
+ <path d="M105 165Q57 130 43 159M155 165q48-35 62-6M108 197q-37 32-31 43M152 197q37 32 31 43" fill="none" opacity=".55"/>
+</g>
+<!-- loc silhouette -->
+<g fill="#171c20" stroke="#332b28" stroke-width="3" stroke-linecap="round">
+ <path d="M78 123Q60 54 113 35q55-27 82 27 19 38-4 95l-18 39-91-2Z"/>
+ <path d="M80 69q-8 45 -5 118" fill="none" stroke-width="5"/><path d="M88 69q0 45 -1 118" fill="none" stroke-width="6"/><path d="M96 69q8 45 3 118" fill="none" stroke-width="7"/><path d="M104 69q-8 45 7 118" fill="none" stroke-width="5"/><path d="M112 69q0 45 -5 118" fill="none" stroke-width="6"/><path d="M120 69q8 45 -1 118" fill="none" stroke-width="7"/><path d="M128 69q-8 45 3 118" fill="none" stroke-width="5"/><path d="M136 69q0 45 7 118" fill="none" stroke-width="6"/><path d="M144 69q8 45 -5 118" fill="none" stroke-width="7"/><path d="M152 69q-8 45 -1 118" fill="none" stroke-width="5"/><path d="M160 69q0 45 3 118" fill="none" stroke-width="6"/><path d="M168 69q8 45 7 118" fill="none" stroke-width="7"/><path d="M176 69q-8 45 -5 118" fill="none" stroke-width="5"/>
+ <path d="M83 77q-28 30-14 93M176 65q34 25 27 88" fill="none" stroke-width="10"/>
+</g>
+<!-- shoulders and garment -->
+<path d="M68 276q4-48 39-61l23-9 26 0 28 12q33 17 39 58l8 64H48Z" fill="url(#cloth)" stroke="#d1b36a" stroke-width="2"/>
+<path d="M106 216q24 25 48 0l22 15-46 92-47-92Z" fill="#244b3d" stroke="#c9a85c" stroke-width="2"/>
+<path d="M130 236l-19 84h39Z" fill="#d0ad62" opacity=".75"/>
+<path d="M63 280q67 26 135 0M55 306q75 27 151 0" fill="none" stroke="#b9c88c" stroke-width="3" opacity=".65"/>
+<!-- neck and face -->
+<path d="M111 177v42q19 20 38 0v-45" fill="url(#skin)"/>
+<path d="M83 111q2-52 47-54 48 1 48 57l-7 49q-8 36-41 43-34-8-43-42Z" fill="url(#skin)" stroke="#432a28" stroke-width="2"/>
+<!-- ears and jewellery -->
+<path d="M82 132q-20-11-17 12 4 17 19 12M178 132q20-11 17 12-4 17-19 12" fill="url(#skin)"/>
+<g fill="url(#gold)" stroke="#805b2d" stroke-width="1.5"><circle cx="73" cy="159" r="6"/><circle cx="187" cy="159" r="6"/><path d="M73 165q-8 24 5 28 13-6 4-26M187 165q8 24-5 28-13-6-4-26"/></g>
+<!-- eyes, brows, nose and lips -->
+<path d="M94 128q14-11 28 0M140 128q14-11 28 0" fill="none" stroke="#2c1d1d" stroke-width="5" stroke-linecap="round"/>
+<path d="M94 139q13-10 26 0-12 13-26 0M141 139q13-10 26 0-12 13-26 0" fill="#f0d8bd"/>
+<ellipse cx="107" cy="139" rx="4.3" ry="5.3" fill="#241d1d"/><ellipse cx="154" cy="139" rx="4.3" ry="5.3" fill="#241d1d"/>
+<circle cx="108" cy="137" r="1.5" fill="#fff"/><circle cx="155" cy="137" r="1.5" fill="#fff"/>
+<path d="M130 141q-8 22 0 25" fill="none" stroke="#512f2c" stroke-width="3" stroke-linecap="round"/>
+<path d="M115 177q15-10 30 0-15 17-30 0" fill="#542a2b"/><path d="M119 177q11-4 22 0" fill="none" stroke="#e5a18c" stroke-width="2"/>
+<!-- forehead diadem -->
+<path d="M83 105q47-35 94 0" fill="none" stroke="url(#gold)" stroke-width="6"/>
+<path d="M130 58l-9 29 9 13 9-13Z" fill="url(#gold)" stroke="#8e632f" stroke-width="2"/>
+<circle cx="130" cy="84" r="5" fill="#4e8062" stroke="#f2d58c" stroke-width="2"/>
+<path d="M97 93l-9 11M163 93l9 11" stroke="#d9b866" stroke-width="3"/>
+<!-- freckles and botanical adornment -->
+<g fill="#e7c17b"><circle cx="98" cy="158" r="2"/><circle cx="105" cy="164" r="1.7"/><circle cx="113" cy="159" r="1.6"/><circle cx="147" cy="159" r="1.6"/><circle cx="155" cy="164" r="1.7"/><circle cx="163" cy="158" r="2"/></g>
+<g fill="none" stroke="#d7bd79" stroke-width="2"><path d="M56 260q-17-24 0-40 14 17 0 40Zm148 0q17-24 0-40-14 17 0 40Z"/><path d="M56 260q-7-13 0-27 7 14 0 27ZM204 260q7-13 0-27-7 14 0 27Z"/></g>
+<!-- floating pollen -->
+<g fill="#f7e4a8"><circle cx="37" cy="92" r="2.5"/><circle cx="216" cy="90" r="2"/><circle cx="35" cy="231" r="2"/><circle cx="226" cy="224" r="3"/><circle cx="205" cy="45" r="2"/></g>
+</svg>
