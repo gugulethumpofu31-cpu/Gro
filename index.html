@@ -146,6 +146,29 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-finance{background:linear-gradient(#e2cf9d,#a99a69)}.biome-finance .hill-back{background:linear-gradient(135deg,#c4b477,#7d8956)}
 .biome-relationships{background:linear-gradient(#e0c3c5,#a17f8c)}.biome-relationships .biome-landmark{background:linear-gradient(145deg,#f8e8e7,#dfc0c7)}
 .biome-experiences{background:linear-gradient(#b9d2d2,#7599a0)}.biome-experiences .biome-path{transform:rotate(7deg);border-color:#e3d3a8}
+/* GRO 1.2 · Distinct places inside every living biome */
+.biome-architecture{position:absolute;z-index:4;left:50%;top:43%;transform:translate(-50%,-50%);width:min(390px,62%);height:220px;display:flex;align-items:center;justify-content:center;pointer-events:none;filter:drop-shadow(0 13px 12px #183b3a55)}
+.arch-ground{position:absolute;bottom:5px;left:5%;right:5%;height:42px;border-radius:50%;background:#244d3d33;filter:blur(5px)}
+.arch-building{position:relative;width:76%;height:150px;display:flex;align-items:center;justify-content:center}
+.arch-roof{position:absolute;top:0;left:4%;right:4%;height:48px;background:linear-gradient(145deg,#87664b,#493e35);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.arch-body{position:absolute;left:13%;right:13%;top:38px;bottom:0;border:5px solid #765a40;background:linear-gradient(90deg,#dfc49b,#f4e4c2 48%,#b68d60);border-radius:5px;box-shadow:inset 0 0 0 5px #ffffff55}
+.arch-door{position:absolute;bottom:0;left:40%;width:20%;height:58%;border-radius:28px 28px 0 0;background:linear-gradient(90deg,#634b39,#987354);border:3px solid #e4c99d}
+.arch-window{position:absolute;top:54px;width:17%;height:32px;border:4px solid #795b42;background:#9cc9c5}
+.arch-window.left{left:19%}.arch-window.right{right:19%}
+.arch-sign{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);font-size:38px;z-index:2}
+.arch-extra{position:absolute;z-index:5;font-size:clamp(24px,3vw,42px);filter:drop-shadow(0 5px 3px #263c3b55)}
+.arch-extra.one{left:0;bottom:20px}.arch-extra.two{right:0;bottom:22px}.arch-extra.three{right:10%;top:0}
+.arch-label{position:absolute;bottom:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;padding:6px 12px;border:1px solid #ffffffaa;border-radius:20px;background:#fff7e5e8;color:#354c49;font:bold 12px Georgia,serif}
+.arch-library .arch-building{width:90%;height:158px}.arch-library .arch-roof{clip-path:none;height:17px;top:12px;background:#765d48;border-radius:4px}.arch-library .arch-body{top:29px;background:repeating-linear-gradient(90deg,#e9d8b5 0 24%,#b88e62 24% 27%,#e9d8b5 27% 49%);border-color:#74553d}.arch-library .arch-door{display:none}.arch-library .arch-window{top:44px;height:76px;width:21%;background:repeating-linear-gradient(0deg,#a77b4f 0 7px,#e7d5b0 7px 10px)}
+.arch-cottage .arch-building{width:78%;height:140px}.arch-cottage .arch-roof{background:linear-gradient(145deg,#a65f49,#713e37);height:62px}.arch-cottage .arch-body{background:linear-gradient(90deg,#e7c99e,#f3dfba);top:49px}.arch-cottage .arch-window{border-radius:50% 50% 0 0}
+.arch-spring{width:min(440px,70%);height:200px}.arch-spring .arch-building{display:none}.spring-pool{position:absolute;left:15%;right:15%;bottom:16px;height:82px;border:12px solid #879d8a;border-radius:50%;background:radial-gradient(ellipse,#d9f3e8,#6db5ad 65%,#397d7a);box-shadow:inset 0 0 18px #fff9,0 10px 12px #254e4a66}.spring-fountain{position:absolute;left:50%;bottom:92px;transform:translateX(-50%);font-size:48px}
+.arch-atelier .arch-building{width:82%;height:145px}.arch-atelier .arch-roof{height:30px;top:5px;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);background:#a58eaa}.arch-atelier .arch-body{top:32px;border:7px solid #a58eaa;background:linear-gradient(90deg,#b9d8d8aa,#f7f1f4cc,#b9d8d8aa);box-shadow:inset 0 0 22px #fff}.arch-atelier .arch-door{background:#826e8e;border-color:#e8d8e8}.arch-atelier .arch-window{background:#c8e7e6aa;border-color:#a58eaa}
+.arch-counting .arch-roof{background:linear-gradient(145deg,#c6a65e,#80633b)}.arch-counting .arch-body{background:linear-gradient(90deg,#d8c18a,#f4e3b3,#c4a56d);border-color:#927744}.arch-counting .arch-door{background:#80613c;border-color:#e8d49b}
+.arch-rose .arch-building{width:86%;height:142px}.arch-rose .arch-roof{height:30px;top:8px;border-radius:50% 50% 0 0;clip-path:none;background:linear-gradient(#a95f77,#70465a)}.arch-rose .arch-body{top:36px;background:linear-gradient(90deg,#e7c6c7,#f6e5df,#d8b0bb);border-color:#a66e7d}.arch-rose .arch-door{background:#936174;border-color:#f2d9d9}
+.arch-wayfinder .arch-roof{background:linear-gradient(145deg,#8b9d8c,#526f6b)}.arch-wayfinder .arch-body{background:linear-gradient(90deg,#d9e3d2,#f3ead0,#b7c9b9);border-color:#728a7c}.arch-wayfinder .arch-door{background:#71877c;border-color:#e5e7cf}
+.arch-timber .arch-building{width:88%;height:152px}.arch-timber .arch-roof{height:26px;top:8px;clip-path:polygon(0 0,100% 0,88% 100%,12% 100%);background:#6c5039}.arch-timber .arch-body{top:34px;background:repeating-linear-gradient(90deg,#a77d52 0 12px,#684b36 12px 17px);border-color:#654a35}.arch-timber .arch-door{background:#513d2f;border-color:#d4b58a}
+@media(max-width:650px){.biome-architecture{width:76%;height:185px;top:46%}.arch-building{height:125px}.arch-roof{height:39px}.arch-body{top:32px}.arch-extra{font-size:25px}.arch-label{font-size:10px}.arch-spring{width:82%}.arch-spring .spring-pool{height:65px}}
+
 @media(max-width:650px){.biome-scene{min-height:350px;border-radius:22px}.biome-landmark{width:58%;min-height:125px;padding:12px}.landmark-icon{font-size:46px}.biome-tree{font-size:43px}.biome-caption{left:13px;right:13px;font-size:8px;letter-spacing:.7px}.biome-actions{gap:5px}.biome-actions button{padding:8px 10px;font-size:10px}}
 
 /* Banga lives inside every biome */
@@ -317,6 +340,20 @@ relationships:{sky:'Rose light in the courtyard',landmark:'The shared courtyard'
 experiences:{sky:'The far horizon is calling',landmark:'The wayfinder pavilion',building:'🧭',flora:['🌾','🦋','🌼','🌳'],feature:'A map table stands beside paths leading towards new places.'}
 };
 const biome=biomeDetails[selectedPlot];
+const architecture={
+career:{kind:'timber',label:'Canopy pavilion',extras:['🌳','🌿','🪵'],sign:'⌂'},
+education:{kind:'library',label:'Open-air library',extras:['📚','🪑','🏮'],sign:'📖'},
+home:{kind:'cottage',label:'Hearth cottage',extras:['🪴','🧺','🌻'],sign:'🍲'},
+wellbeing:{kind:'spring',label:'Resting spring',extras:['🪷','🪨','🌿'],sign:''},
+creativity:{kind:'atelier',label:'Glass music atelier',extras:['🎨','🌺','🎼'],sign:'🎹'},
+finance:{kind:'counting',label:'The counting house',extras:['🍊','🌾','🪙'],sign:'♧'},
+relationships:{kind:'rose',label:'Rose courtyard',extras:['🌹','🪑','💐'],sign:'♡'},
+experiences:{kind:'wayfinder',label:'Wayfinder pavilion',extras:['🧭','🗺️','🌾'],sign:'✧'}
+}[selectedPlot];
+const architectureHTML=architecture.kind==='spring'
+?'<div class="biome-architecture arch-spring"><span class="arch-extra one">'+architecture.extras[0]+'</span><span class="arch-extra two">'+architecture.extras[1]+'</span><span class="arch-extra three">'+architecture.extras[2]+'</span><div class="spring-pool"></div><div class="spring-fountain">⛲</div><span class="arch-label">'+architecture.label+'</span></div>'
+:'<div class="biome-architecture arch-'+architecture.kind+'"><div class="arch-ground"></div><div class="arch-building"><div class="arch-roof"></div><div class="arch-body"></div><div class="arch-door"></div><div class="arch-window left"></div><div class="arch-window right"></div><div class="arch-sign">'+architecture.sign+'</div></div><span class="arch-extra one">'+architecture.extras[0]+'</span><span class="arch-extra two">'+architecture.extras[1]+'</span><span class="arch-extra three">'+architecture.extras[2]+'</span><span class="arch-label">'+architecture.label+'</span></div>';
+
 const biomeOpenTasks=items.filter(t=>!t.done);
 const biomeOverdue=biomeOpenTasks.filter(t=>t.due&&t.due<day());
 const biomeOpenGoals=pd.goals.filter(g=>!g.done);
@@ -329,7 +366,7 @@ const biomeScene=`<section class="biome-scene biome-${selectedPlot}" aria-label=
 <div class="biome-hill hill-back"></div><div class="biome-hill hill-front"></div>
 <div class="biome-water"></div><div class="biome-path"></div>
 <div class="biome-tree tree-a">${biome.flora[0]}</div><div class="biome-tree tree-b">${biome.flora[1]}</div><div class="biome-tree tree-c">${biome.flora[2]}</div><div class="biome-tree tree-d">${biome.flora[3]}</div>
-<div class="biome-landmark"><span class="landmark-glow"></span><span class="landmark-icon">${biome.building}</span><strong>${biome.landmark}</strong><small>${biome.feature}</small></div>
+${architectureHTML}<div class="biome-landmark"><span class="landmark-glow"></span><span class="landmark-icon">${biome.building}</span><strong>${biome.landmark}</strong><small>${biome.feature}</small></div>
 <div class="biome-banga mood-${bangaBiomeMood}" aria-label="Banga fluttering in the ${p[1]} garden">
 <div class="banga-flight-trail"></div><span class="banga-fairy-wings wing-left">✧</span><span class="banga-fairy-wings wing-right">✧</span><span class="banga-fairy-body">🧚🏾‍♀️</span><span class="banga-name">Banga</span>
 <button class="banga-speech" data-biome-banga aria-expanded="false" title="Hear what Banga noticed">✦</button>
