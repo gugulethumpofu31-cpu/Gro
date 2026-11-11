@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+<defs>
+ <linearGradient id="roofwood" x2="0" y2="1"><stop stop-color="#bd8b58"/><stop offset=".22" stop-color="#74482f"/><stop offset="1" stop-color="#302923"/></linearGradient>
+ <linearGradient id="beam" x2="1" y2="1"><stop stop-color="#e0b77b"/><stop offset=".45" stop-color="#8c5b38"/><stop offset="1" stop-color="#493126"/></linearGradient>
+ <linearGradient id="glass" x2="0" y2="1"><stop stop-color="#f6d99a"/><stop offset=".5" stop-color="#9bb99a"/><stop offset="1" stop-color="#365e48"/></linearGradient>
+ <filter id="shade"><feGaussianBlur stdDeviation="8"/></filter>
+ <pattern id="shingles" width="58" height="34" patternUnits="userSpaceOnUse"><path d="M0 1Q28 10 58 1M-29 18Q0 27 29 18T87 18" fill="none" stroke="#e2b778" stroke-opacity=".38" stroke-width="4"/><path d="M29 2V17M0 18V33" stroke="#251f1c" stroke-opacity=".38" stroke-width="3"/></pattern>
+ <pattern id="planks" width="90" height="26" patternUnits="userSpaceOnUse"><path d="M0 4Q40 -1 90 4M0 20Q42 15 90 20" fill="none" stroke="#f1cf98" stroke-opacity=".22" stroke-width="2"/></pattern>
+</defs>
+<!-- roof: deep layered timber and individual shingles -->
+<path d="M205 585L800 160 1400 585L1350 625 800 270 260 625Z" fill="#201e1b" opacity=".6" filter="url(#shade)"/>
+<path d="M225 565L800 155 1380 565L1335 603 800 255 270 603Z" fill="url(#roofwood)" stroke="#e3bf84" stroke-width="17"/>
+<path d="M245 562L800 178 1360 562L1320 584 800 230 285 584Z" fill="url(#shingles)" opacity=".95"/>
+<path d="M225 565L800 155 1380 565" fill="none" stroke="#f0d29a" stroke-width="12"/>
+<path d="M290 600L800 245 1320 600" fill="none" stroke="#5a3928" stroke-width="22"/>
+<path d="M310 584L800 250 1290 584" fill="none" stroke="#d9aa6d" stroke-width="7"/>
+<!-- carved gable fascia -->
+<path d="M670 250L800 160 930 250L800 340Z" fill="#533627" stroke="#d5a66d" stroke-width="10"/>
+<path d="M710 250L800 190 890 250L800 312Z" fill="#304c3a" stroke="#e4c58e" stroke-width="6"/>
+<path d="M745 250L800 215 855 250L800 285Z" fill="none" stroke="#c99c62" stroke-width="5"/>
+<circle cx="800" cy="250" r="13" fill="#e8ca8d"/>
+<!-- roof supports and decorative brackets -->
+<g fill="none" stroke="url(#beam)" stroke-width="26" stroke-linecap="round">
+ <path d="M330 575V825M1270 575V825M475 500V790M1125 500V790"/>
+ <path d="M330 600Q405 590 475 520M1270 600Q1195 590 1125 520"/>
+ <path d="M475 520Q535 560 580 580M1125 520Q1065 560 1020 580"/>
+</g>
+<g fill="none" stroke="#e8c58a" stroke-width="5" opacity=".8">
+ <path d="M310 615Q400 610 490 520M1290 615Q1200 610 1110 520"/>
+ <path d="M350 645L350 790M455 560L455 760M1145 560L1145 760M1250 645L1250 790"/>
+</g>
+<!-- carved balcony rail with balusters -->
+<path d="M205 700Q800 815 1395 700" fill="none" stroke="#3b2922" stroke-width="32"/>
+<path d="M205 688Q800 802 1395 688" fill="none" stroke="#d7ae72" stroke-width="13"/>
+<path d="M205 712Q800 826 1395 712" fill="none" stroke="#6b432d" stroke-width="11"/>
+<g stroke="#c9955e" stroke-width="11" fill="#70462f">
+ <path d="M280 700L275 762M380 720L375 780M490 742L485 798M610 760L605 812M990 760L995 812M1110 742L1115 798M1220 720L1225 780M1320 700L1325 762"/>
+</g>
+<g fill="#d9b47b"><circle cx="275" cy="695" r="10"/><circle cx="375" cy="715" r="10"/><circle cx="485" cy="737" r="10"/><circle cx="605" cy="755" r="10"/><circle cx="995" cy="755" r="10"/><circle cx="1115" cy="737" r="10"/><circle cx="1225" cy="715" r="10"/><circle cx="1325" cy="695" r="10"/></g>
+<!-- open arch windows with timber mullions -->
+<g>
+ <path d="M700 625V510Q700 430 800 430Q900 430 900 510V625Z" fill="#342921" stroke="#d5a86d" stroke-width="14"/>
+ <path d="M720 615V512Q720 450 800 450Q880 450 880 512V615Z" fill="url(#glass)"/>
+ <path d="M800 450V615M720 525H880" stroke="#e4c38b" stroke-width="10"/>
+ <path d="M465 620V520Q465 465 525 465Q585 465 585 520V620Z" fill="#342921" stroke="#d1a36a" stroke-width="12"/>
+ <path d="M483 610V522Q483 485 525 485Q567 485 567 522V610Z" fill="url(#glass)"/>
+ <path d="M525 485V610M483 545H567" stroke="#e4c38b" stroke-width="8"/>
+ <path d="M1015 620V520Q1015 465 1075 465Q1135 465 1135 520V620Z" fill="#342921" stroke="#d1a36a" stroke-width="12"/>
+ <path d="M1033 610V522Q1033 485 1075 485Q1117 485 1117 522V610Z" fill="url(#glass)"/>
+ <path d="M1075 485V610M1033 545H1117" stroke="#e4c38b" stroke-width="8"/>
+</g>
+<!-- stairway and landing -->
+<path d="M610 720L990 720L1090 900H510Z" fill="#503629" stroke="#d5aa70" stroke-width="12"/>
+<path d="M595 760H1005M570 805H1030M545 850H1055" stroke="#d6ad72" stroke-width="12"/>
+<path d="M620 720L520 900M980 720L1080 900" stroke="#e5c28b" stroke-width="10"/>
+<!-- lantern brackets and glass lanterns -->
+<g stroke="#4b3227" stroke-width="9">
+ <path d="M385 420V470M365 470H405"/><path d="M1215 420V470M1195 470H1235"/>
+</g>
+<g fill="#f8d58e" stroke="#9a6841" stroke-width="7">
+ <path d="M365 470H405L399 525H371Z"/><path d="M1195 470H1235L1229 525H1201Z"/>
+</g>
+<g fill="#fff0ba" opacity=".35"><circle cx="385" cy="495" r="44"/><circle cx="1215" cy="495" r="44"/></g>
+<!-- planter boxes and cascading blooms -->
+<g>
+ <path d="M270 645H420L405 685H285Z" fill="#75462f" stroke="#d3a46a" stroke-width="7"/>
+ <path d="M1180 645H1330L1315 685H1195Z" fill="#75462f" stroke="#d3a46a" stroke-width="7"/>
+ <g fill="#73965a"><path d="M300 645Q280 595 315 570Q340 605 300 645Z"/><path d="M340 645Q340 580 380 570Q380 620 340 645Z"/><path d="M1220 645Q1195 590 1235 565Q1255 615 1220 645Z"/><path d="M1270 645Q1260 580 1310 575Q1305 625 1270 645Z"/></g>
+ <g fill="#ce77ae"><circle cx="315" cy="580" r="13"/><circle cx="380" cy="570" r="12"/><circle cx="1235" cy="565" r="13"/><circle cx="1310" cy="575" r="12"/></g>
+</g>
+<!-- fine joinery and wood grain -->
+<path d="M275 620Q800 750 1325 620M285 640Q800 770 1315 640" fill="none" stroke="#f0d3a0" stroke-opacity=".45" stroke-width="4"/>
+<path d="M330 830L475 830M1125 830L1270 830" stroke="#c38e58" stroke-width="6" opacity=".7"/>
+</svg>
