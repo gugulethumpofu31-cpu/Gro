@@ -1,9 +1,11 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js';
 
-(() => {
+const mountCanopy = () => {
   const sceneHost = document.querySelector('.biome-career .career-3d-world');
-  if (!sceneHost || !window.WebGLRenderingContext) return;
+  if (!sceneHost || sceneHost.dataset.mounted || !window.WebGLRenderingContext) return;
+  sceneHost.dataset.mounted = 'true';
+  if (window.GROCanopyCleanup) window.GROCanopyCleanup();
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color('#a8bca0');
@@ -300,5 +302,9 @@ import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/exampl
     renderer.render(scene,camera);
   };
   animate();
-  window.addEventListener('pagehide',()=>{observer.disconnect();controls.dispose();renderer.dispose();},{once:true});
-})();
+  const cleanup=()=>{observer.disconnect();controls.dispose();renderer.dispose();};
+  window.GROCanopyCleanup=cleanup;
+};
+const canopyObserver = new MutationObserver(mountCanopy);
+canopyObserver.observe(document.body,{childList:true,subtree:true});
+mountCanopy();
