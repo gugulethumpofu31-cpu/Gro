@@ -197,14 +197,14 @@ const mountCanopy = () => {
       branch.rotation.x=Math.sin(angle)*0.55;
     }
     const clusters=[
-      [-0.72,3.05,0.12,1.1,0.9,1.0],[-0.15,3.55,-0.25,1.2,1.0,1.1],
-      [0.62,3.15,0.1,1.05,0.9,1.0],[0.05,2.95,0.68,1.0,0.85,0.9],
-      [-0.1,4.05,0.3,0.88,0.82,0.9],[0.55,3.8,-0.42,0.8,0.8,0.85]
+      [-0.66,3.0,0.12,0.88,0.64,0.82],[-0.12,3.42,-0.25,0.98,0.72,0.9],
+      [0.62,3.05,0.1,0.84,0.65,0.82],[0.05,2.88,0.68,0.82,0.62,0.76],
+      [-0.1,3.88,0.3,0.72,0.62,0.76],[0.55,3.64,-0.42,0.68,0.6,0.72]
     ];
     clusters.forEach((c,i)=>sphere(g,c[0],c[1],c[2],c[3],c[4],c[5],[leafDark,leafMid,leafLight,leafMid][(i+kind)%4]));
     for(let i=0;i<12;i++){
       const a=i*2.4+kind, r=0.72+(i%3)*0.22;
-      sphere(g,Math.cos(a)*r,3.15+(i%4)*0.28,Math.sin(a)*r,0.22,0.17,0.2,[leafMid,leafLight][i%2]);
+      sphere(g,Math.cos(a)*r,3.05+(i%4)*0.24,Math.sin(a)*r,0.17,0.105,0.16,[leafMid,leafLight][i%2]);
     }
     // Buttress roots make each trunk sit visibly in the terrain.
     for(let i=0;i<4;i++){
@@ -214,12 +214,12 @@ const mountCanopy = () => {
     }
     return g;
   }
-  makeTree(-5.8,1.6,1.22,0);
-  makeTree(5.65,1.45,1.28,1);
-  makeTree(-5.25,-2.1,0.78,2);
-  makeTree(5.0,-2.25,0.82,1);
-  makeTree(-3.5,3.0,0.66,0);
-  makeTree(3.6,3.1,0.7,2);
+  makeTree(-6.0,1.8,0.88,0);
+  makeTree(6.0,1.8,0.92,1);
+  makeTree(-5.7,-2.4,0.62,2);
+  makeTree(5.7,-2.45,0.66,1);
+  makeTree(-4.1,3.15,0.48,0);
+  makeTree(4.2,3.15,0.5,2);
 
   // Ferns, shrubs, flowers and small woodland details.
   function makeFern(x,z,s=1){
@@ -265,12 +265,7 @@ const mountCanopy = () => {
     const lamp=sphere(pavilion,x,1.77,z,0.12,0.17,0.12,mat('#ffe4a0',0.3,{emissive:'#e8a94c',emissiveIntensity:1.0}));
   }
 
-  // A faint woodland canopy arch frames the world without obscuring the pavilion.
-  for(let i=0;i<14;i++){
-    const a=Math.PI+(i/13)*Math.PI;
-    const x=Math.cos(a)*8.1, y=5.0+Math.sin(a)*0.65, z=Math.sin(a)*2.8;
-    sphere(scene,x,y,z,0.9,0.62,0.9,[leafDark,leafMid,leafLight][i%3]);
-  }
+  // The canopy is formed by the independently modelled trees around the island.
 
   // Controls: real camera orbit, with quarter-turn buttons for accessible rotation.
   sceneHost.closest('.biome-scene')?.querySelectorAll('[data-world-turn]').forEach(button=>{
