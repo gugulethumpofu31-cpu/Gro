@@ -338,6 +338,35 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-career .place-room .place-object span{font-size:34px}
 .biome-career .place-interior{background-image:radial-gradient(ellipse at 50% 0%,#42684d55,transparent 65%),linear-gradient(145deg,#102c22f7,#1c4934f7 55%,#352b27f7)}
 @media(max-width:650px){.biome-career .place-room{background-position:center;background-size:cover}.biome-career .place-room .place-object{min-width:105px;min-height:90px}}
+
+/* GRO 1.7 · Full Canopy of Ambition illustrated environment */
+.biome-career{background:#18392d!important;isolation:isolate}
+.biome-career .career-art-background{background-image:linear-gradient(180deg,#10281d22 0%,transparent 58%,#10281d55 100%),url('assets/career-canopy-rich.svg')!important;background-size:cover!important;background-position:center 48%!important;filter:saturate(1.13) contrast(1.04)!important;animation:canopyLightShift 24s ease-in-out infinite alternate}
+.biome-career .biome-scene-inner,.biome-career .scene-content{position:relative;z-index:2}
+.biome-career .career-hotspots{z-index:13}
+.biome-career .career-hotspot{font-size:13px;padding:11px 16px;background:linear-gradient(145deg,#092c22f2,#174832f2);border:1px solid #e7c477;color:#fff0c7;box-shadow:0 7px 22px #081c16aa, inset 0 1px #fff8}
+.biome-career .career-hotspot:after{content:"";position:absolute;inset:3px;border:1px solid #d9b66b66;border-radius:inherit;pointer-events:none}
+.biome-career .career-hotspot.knowledge{left:31%;top:28%}
+.biome-career .career-hotspot.strategy{right:18%;top:29%}
+.biome-career .career-hotspot.desk{left:49%;top:55%}
+.biome-career .career-hotspot.horizon{right:4%;top:47%}
+.biome-career .career-hotspot.meeting{left:47%;top:75%}
+.biome-career .biome-banga{left:11%;top:48%;z-index:14}
+.biome-career .biome-caption{z-index:15;text-shadow:0 2px 9px #10271c}
+.biome-career .biome-actions{z-index:15}
+.biome-career .place-entry{z-index:16}
+@keyframes canopyLightShift{0%{filter:saturate(1.08) brightness(.94)}100%{filter:saturate(1.18) brightness(1.05)}}
+@media(max-width:650px){
+ .biome-career .career-art-background{background-position:52% center!important}
+ .biome-career .career-hotspot{font-size:9px;padding:6px 8px}
+ .biome-career .career-hotspot.knowledge{left:17%;top:26%}
+ .biome-career .career-hotspot.strategy{right:2%;top:26%}
+ .biome-career .career-hotspot.desk{left:39%;top:54%}
+ .biome-career .career-hotspot.horizon{right:1%;top:42%}
+ .biome-career .career-hotspot.meeting{left:36%;top:72%}
+ .biome-career .biome-banga{left:2%;top:45%;transform:scale(.88)}
+}
+@media(prefers-reduced-motion:reduce){.biome-career .career-art-background{animation:none}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
