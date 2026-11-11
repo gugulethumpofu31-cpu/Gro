@@ -221,6 +221,41 @@ const mountCanopy = () => {
   makeTree(-4.1,3.15,0.48,0);
   makeTree(4.2,3.15,0.5,2);
 
+  // Cascades of wisteria: climbing stems, hanging racemes and delicate paired leaves.
+  const wisteriaStem = mat('#456b43');
+  const wisteriaLeaf = mat('#668b52');
+  const wisteriaBloomA = mat('#a98acb',0.72);
+  const wisteriaBloomB = mat('#c4a5dc',0.72);
+  const wisteriaBloomC = mat('#e1c4e9',0.72);
+  function addWisteriaCascade(parent, x, y, z, length=1.7, seed=0) {
+    const stemCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(x,y,z), new THREE.Vector3(x+0.12,y-0.22,z+0.04),
+      new THREE.Vector3(x-0.05,y-length*0.55,z+0.09), new THREE.Vector3(x+0.08,y-length,z+0.12)
+    ]);
+    add(new THREE.Mesh(new THREE.TubeGeometry(stemCurve,18,0.025,6,false),wisteriaStem),parent);
+    for(let i=0;i<5;i++){
+      const t=0.14+i*0.15,p=stemCurve.getPoint(t);
+      const leaf=sphere(parent,p.x+(i%2?0.16:-0.16),p.y+0.06,p.z+0.03,0.13,0.055,0.085,wisteriaLeaf);
+      leaf.rotation.z=(i%2?-.55:.55);
+    }
+    for(let i=0;i<8;i++){
+      const t=i/7,p=stemCurve.getPoint(0.25+t*0.72),spread=0.12+Math.sin(t*Math.PI)*0.16;
+      const bloomMat=[wisteriaBloomA,wisteriaBloomB,wisteriaBloomC][(i+seed)%3];
+      for(let j=0;j<3;j++){
+        const a=j*Math.PI*2/3+(seed*0.7);
+        const petal=sphere(parent,p.x+Math.cos(a)*spread*0.42,p.y-t*0.08,p.z+Math.sin(a)*spread*0.42,0.075,0.105,0.07,bloomMat);
+        petal.rotation.z=-0.22;
+      }
+    }
+    sphere(parent,x+0.08,y-length,z+0.12,0.07,0.09,0.07,wisteriaBloomC);
+  }
+  // Wisteria drapes from the pavilion eaves and selected mature branches.
+  for(const x of [-1.75,-0.9,0.15,1.25,1.85]) addWisteriaCascade(pavilion,x,2.48,1.34,1.05+(Math.abs(x)%0.4),Math.round((x+2)*3));
+  for(const [x,z,scale] of [[-5.95,1.8,0.9],[5.95,1.75,0.82],[-4.0,3.0,0.55]]){
+    const vineGroup=new THREE.Group();vineGroup.position.set(x,0,z);vineGroup.scale.setScalar(scale);scene.add(vineGroup);
+    for(let i=0;i<3;i++) addWisteriaCascade(vineGroup,-0.3+i*0.3,3.15-(i%2)*0.15,0.1,1.45+(i%3)*0.25,i+2);
+  }
+
   // Ferns, shrubs, flowers and small woodland details.
   function makeFern(x,z,s=1){
     const g=new THREE.Group();g.position.set(x,0.42,z);g.scale.setScalar(s);scene.add(g);
