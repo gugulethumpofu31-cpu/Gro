@@ -256,6 +256,62 @@ const mountCanopy = () => {
     for(let i=0;i<3;i++) addWisteriaCascade(vineGroup,-0.3+i*0.3,3.15-(i%2)*0.15,0.1,1.45+(i%3)*0.25,i+2);
   }
 
+  // Layered leaf silhouettes and clustered understory give the forest a painterly edge.
+  const leafPalette=['#355b3d','#456f48','#5b8151','#78945c','#a3aa67'].map(c=>mat(c,0.96,{side:THREE.DoubleSide}));
+  const leafShape=new THREE.Shape();
+  leafShape.moveTo(0,0);leafShape.bezierCurveTo(-0.16,0.18,-0.2,0.42,0,0.72);
+  leafShape.bezierCurveTo(0.2,0.42,0.16,0.18,0,0);
+  const leafGeo=new THREE.ShapeGeometry(leafShape,5);
+  const leafMeshes=[];
+  function botanicalLeaf(parent,x,y,z,scale,rotation,material){
+    const mesh=add(new THREE.Mesh(leafGeo,material),parent);
+    mesh.position.set(x,y,z);mesh.scale.setScalar(scale);
+    mesh.rotation.set(rotation[0],rotation[1],rotation[2]);
+    leafMeshes.push(mesh);return mesh;
+  }
+  // Irregular sprays soften the silhouette of each mature tree.
+  for(const [tx,tz,scale] of [[-6,1.8,.88],[6,1.8,.92],[-5.7,-2.4,.62],[5.7,-2.45,.66],[-4.1,3.15,.48],[4.2,3.15,.5]]){
+    for(let i=0;i<62;i++){
+      const a=i*2.39996, radial=0.55+((i*17)%23)/30;
+      const x=tx+Math.cos(a)*radial*scale;
+      const y=(3.1+Math.sin(i*1.7)*.65)*scale;
+      const z=tz+Math.sin(a)*radial*scale;
+      botanicalLeaf(scene,x,y,z,0.25+((i*7)%9)*.03,[Math.sin(a)*.5,a,Math.cos(a)*.7],leafPalette[i%leafPalette.length]);
+    }
+  }
+  // Low, varied ground-cover beds, rather than a uniformly empty grass slab.
+  for(let i=0;i<210;i++){
+    const a=i*2.399963,r=1.7+Math.sqrt(i/210)*5.4;
+    const x=Math.cos(a)*r,z=Math.sin(a)*r*.67;
+    if(Math.abs(x)<2.8&&z>-.1&&z<2.8)continue;
+    const height=.12+(i%7)*.035;
+    botanicalLeaf(scene,x,.39,z,.25+(i%5)*.08,[Math.PI*.12,Math.sin(i)*1.4,Math.cos(i)*.7],leafPalette[i%5]);
+  }
+  // Flecks of golden morning light float through the garden.
+  const motes=new THREE.Group();scene.add(motes);
+  const moteMat=new THREE.MeshBasicMaterial({color:'#f9dba1',transparent:true,opacity:.72,depthWrite:false});
+  for(let i=0;i<48;i++){
+    const x=Math.sin(i*12.17)*6.3,y=.8+(i%17)*.22,z=Math.cos(i*7.31)*3.5;
+    const mote=new THREE.Mesh(new THREE.SphereGeometry(.022+(i%3)*.008,5,4),moteMat);
+    mote.position.set(x,y,z);motes.add(mote);
+  }
+  // Small animated butterflies with individually articulated wings.
+  const butterflies=[];
+  const wingMat=[mat('#e2c0a0',.8,{side:THREE.DoubleSide}),mat('#c9a8d7',.8,{side:THREE.DoubleSide}),mat('#e8d88e',.8,{side:THREE.DoubleSide})];
+  for(let i=0;i<9;i++){
+    const g=new THREE.Group();scene.add(g);
+    g.position.set(Math.sin(i*2.7)*4,1.3+(i%4)*.45,Math.cos(i*1.9)*2.8);
+    cylinder(g,0,0,0,.017,.02,.15,bark,6);
+    const wings=[];
+    for(const side of [-1,1]){
+      const pivot=new THREE.Group();g.add(pivot);
+      const wing=new THREE.Mesh(new THREE.SphereGeometry(1,10,7),wingMat[i%3]);
+      wing.scale.set(.23,.31,.035);wing.position.set(side*.17,.09,0);
+      pivot.add(wing);wings.push([pivot,side]);
+    }
+    butterflies.push({g,wings,phase:i*1.8,base:g.position.clone()});
+  }
+
   // Ferns, shrubs, flowers and small woodland details.
   function makeFern(x,z,s=1){
     const g=new THREE.Group();g.position.set(x,0.42,z);g.scale.setScalar(s);scene.add(g);
@@ -327,13 +383,26 @@ const mountCanopy = () => {
   sceneHost.classList.add('is-ready');
   const fallback=sceneHost.parentElement.querySelector('.career-isometric-art');
   if(fallback)fallback.hidden=true;
+  let animationFrame=0;
+  const clock=new THREE.Clock();
   const animate=()=>{
-    requestAnimationFrame(animate);
+    animationFrame=requestAnimationFrame(animate);
+    const t=clock.getElapsedTime();
+    butterflies.forEach(({g,wings,phase,base})=>{
+      g.position.set(base.x+Math.sin(t*.65+phase)*.27,base.y+Math.sin(t*1.4+phase)*.16,base.z+Math.cos(t*.55+phase)*.23);
+      g.rotation.y=Math.sin(t*.5+phase)*.5;
+      wings.forEach(([pivot,side])=>{pivot.rotation.y=side*(.4+Math.sin(t*11+phase)*.85);});
+    });
+    motes.position.y=Math.sin(t*.4)*.06;
     controls.update();
     renderer.render(scene,camera);
   };
   animate();
-  const cleanup=()=>{observer.disconnect();controls.dispose();renderer.dispose();window.GROCanopyCleanup=null;};
+  const cleanup=()=>{
+    cancelAnimationFrame(animationFrame);observer.disconnect();controls.dispose();
+    scene.traverse(object=>{if(object.geometry)object.geometry.dispose();});
+    renderer.dispose();renderer.domElement.remove();window.GROCanopyCleanup=null;
+  };
   window.GROCanopyCleanup=cleanup;
 };
 const canopyObserver = new MutationObserver(mountCanopy);
