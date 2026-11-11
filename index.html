@@ -498,6 +498,18 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
  .biome-career .career-isometric-art{object-fit:cover}
 }
 @media(prefers-reduced-motion:reduce){.biome-career .career-isometric-art,.biome-career .career-hotspots,.biome-career .biome-banga{transition:none}}
+
+/* GRO 2.3 · True interactive Canopy geometry */
+.biome-career .career-3d-world{position:absolute;inset:0;z-index:1;overflow:hidden;background:linear-gradient(180deg,#b9c6ad,#66815d 72%,#405b40);touch-action:pan-y}
+.biome-career .career-3d-world canvas{display:block;width:100%;height:100%;outline:none;cursor:grab;touch-action:pan-y}
+.biome-career .career-3d-world canvas:active{cursor:grabbing}
+.biome-career .career-isometric-art[hidden]{display:none!important}
+.biome-career .career-hotspots,.biome-career .biome-banga{transform:none!important;transition:filter .25s ease}
+.biome-career .career-hotspots{z-index:12}
+.biome-career .biome-banga{z-index:14}
+.biome-career .career-camera-controls{z-index:25}
+.biome-career .biome-caption,.biome-career .biome-actions,.biome-career .place-entry{z-index:15}
+@media(max-width:650px){.biome-career .career-3d-world{inset:0}.biome-career .career-camera-controls{z-index:25}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
@@ -644,7 +656,7 @@ const biomeOpenMilestones=pd.milestones.filter(x=>!x.done);
 const biomeHabitsPending=pd.habits.filter(h=>!(h.completedDates||[]).includes(day()));
 const bangaBiomeNote=phase()==='night'?'The garden is quiet now. I am settling among the flowers to dream.':biomeOverdue.length?'I noticed '+biomeOverdue.length+' overdue '+(biomeOverdue.length===1?'task':'tasks')+' here. Shall we choose one gentle next step?':biomeOpenTasks.length?'There is '+biomeOpenTasks.length+' growing '+(biomeOpenTasks.length===1?'task':'tasks')+' here. I can keep you company while you tend one.':biomeOpenGoals.length?'Your goals are taking root. What small action could help one of them grow today?':biomeHabitsPending.length?'A little ritual is waiting here. Would you like to check in on a habit?':biomeOpenMilestones.length?'You are moving towards your next milestone. Keep the pace kind and steady.':'This little corner is flourishing. Take a moment to notice what you have nurtured.';
 const bangaBiomeMood=phase()==='night'?'resting':biomeOverdue.length?'thoughtful':biomeOpenTasks.length?'attentive':'cheerful';
-const biomeScene=`<section class="biome-scene biome-${selectedPlot}"><div class="career-art-background" aria-hidden="true"></div><img class="career-isometric-art" src="assets/career-isometric-world.svg" alt="" aria-hidden="true"><div class="career-camera-controls" aria-label="Change garden viewing angle"><button type="button" data-world-turn="-90" aria-label="Rotate view anticlockwise">↶</button><span>VIEW</span><button type="button" data-world-turn="90" aria-label="Rotate view clockwise">↷</button></div>
+const biomeScene=`<section class="biome-scene biome-${selectedPlot}"><div class="career-art-background" aria-hidden="true"></div><div class="career-3d-world" aria-label="Interactive three-dimensional Canopy garden"></div><img class="career-isometric-art" src="assets/career-isometric-world.svg" alt="" aria-hidden="true"><div class="career-camera-controls" aria-label="Change garden viewing angle"><button type="button" data-world-turn="-90" aria-label="Rotate view anticlockwise">↶</button><span>VIEW</span><button type="button" data-world-turn="90" aria-label="Rotate view clockwise">↷</button></div>
 <div class="biome-sky"><span class="biome-sun"></span><span class="biome-cloud c1"></span><span class="biome-cloud c2"></span><span class="biome-skyline"></span></div>
 <div class="biome-hill hill-back"></div><div class="biome-hill hill-front"></div>
 <div class="biome-water"></div><div class="biome-path"></div>
@@ -728,4 +740,4 @@ document.addEventListener('click',e=>{
 });
 
 render();setInterval(()=>{if(!$('#modal').open)render()},60000);
-</script></body></html>
+</script><script type="module" src="assets/career-world.js"></script></body></html>
