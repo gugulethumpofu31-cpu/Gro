@@ -397,6 +397,75 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 /* GRO 2.0 · pavilion architecture artwork overlay */
 .biome-career .career-art-background{background-repeat:no-repeat!important;background-size:cover,cover,cover!important;background-position:center 48%,center 48%,center 48%!important}
 .biome-career .career-art-background:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 48%,#142b1e20 72%,#142b1e55 100%)}
+
+/* GRO 2.1 · Canopy depth pass: layered 3D stage */
+.biome-career.biome-scene{
+ perspective:1250px;
+ perspective-origin:50% 48%;
+ transform-style:preserve-3d;
+ background:#1c3b2c!important;
+}
+.biome-career .career-art-background{
+ transform:translateZ(-105px) scale(1.14);
+ transform-origin:50% 48%;
+ transform-style:preserve-3d;
+ backface-visibility:hidden;
+}
+.biome-career .career-art-background:before{
+ content:"";
+ position:absolute;
+ inset:-2%;
+ pointer-events:none;
+ background:
+  radial-gradient(ellipse at 8% 78%,#0d2a1caa 0%,transparent 28%),
+  radial-gradient(ellipse at 94% 80%,#0d2a1caa 0%,transparent 30%),
+  linear-gradient(180deg,#112a1f22 0%,transparent 42%,#10291d44 100%);
+ transform:translateZ(18px);
+}
+.biome-career .career-hotspots{
+ transform:translateZ(65px);
+ transform-style:preserve-3d;
+}
+.biome-career .career-hotspot{
+ transform:translateZ(20px);
+ box-shadow:0 13px 24px #06180fbb,0 3px 0 #071b13,inset 0 1px #fff9;
+}
+.biome-career .career-hotspot:hover{
+ transform:translateZ(38px) translateY(-5px);
+}
+.biome-career .biome-banga{
+ transform:translateZ(90px) scale(1.18);
+ filter:drop-shadow(0 18px 13px #071b1788);
+}
+.biome-career .biome-caption,
+.biome-career .biome-actions,
+.biome-career .place-entry{
+ transform:translateZ(55px);
+}
+.biome-career .biome-caption{filter:drop-shadow(0 4px 6px #081d15aa)}
+.biome-career .place-entry{box-shadow:0 12px 22px #06180fbb,0 4px 0 #071b13}
+.biome-career .career-art-background:after{
+ content:"";
+ position:absolute;
+ inset:auto -3% -4%;
+ height:23%;
+ pointer-events:none;
+ background:
+  radial-gradient(ellipse at 8% 90%,#163c28 0 22%,transparent 23%),
+  radial-gradient(ellipse at 26% 110%,#315b39 0 19%,transparent 20%),
+  radial-gradient(ellipse at 76% 110%,#315b39 0 20%,transparent 21%),
+  radial-gradient(ellipse at 96% 90%,#173d29 0 23%,transparent 24%);
+ filter:blur(2px);
+ transform:translateZ(85px);
+}
+@media(max-width:650px){
+ .biome-career.biome-scene{perspective:900px}
+ .biome-career .career-art-background{transform:translateZ(-65px) scale(1.1)}
+ .biome-career .career-hotspots{transform:translateZ(35px)}
+ .biome-career .biome-banga{transform:translateZ(55px) scale(.88)}
+ .biome-career .biome-caption,.biome-career .biome-actions,.biome-career .place-entry{transform:translateZ(30px)}
+}
+@media(prefers-reduced-motion:reduce){.biome-career *{scroll-behavior:auto!important}}
 </style></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
