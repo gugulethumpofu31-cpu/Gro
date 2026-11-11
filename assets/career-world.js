@@ -55,6 +55,26 @@ const mountCanopy = () => {
   const waterMat = new THREE.MeshStandardMaterial({ color: '#70b6ae', roughness: 0.22, metalness: 0.08, transparent: true, opacity: 0.9 });
   const flowerPink = mat('#d88bb6');
   const flowerCream = mat('#f0d59a');
+  // Hand-painted procedural surface maps keep the geometry from feeling plastic.
+  function canvasTexture(draw, repeatX=1, repeatY=1) {
+    const canvas=document.createElement('canvas');canvas.width=256;canvas.height=256;
+    const ctx=canvas.getContext('2d');draw(ctx,canvas.width,canvas.height);
+    const texture=new THREE.CanvasTexture(canvas);texture.colorSpace=THREE.SRGBColorSpace;
+    texture.wrapS=texture.wrapT=THREE.RepeatWrapping;texture.repeat.set(repeatX,repeatY);
+    texture.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());return texture;
+  }
+  const barkTexture=canvasTexture((ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,0);g.addColorStop(0,'#543724');g.addColorStop(.28,'#916541');g.addColorStop(.55,'#69452f');g.addColorStop(.82,'#a2764d');g.addColorStop(1,'#4d3528');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    for(let i=0;i<72;i++){const x=(i*47)%w;ctx.strokeStyle=i%3?'#2e211b55':'#e0b17a55';ctx.lineWidth=1+(i%3);ctx.beginPath();ctx.moveTo(x,0);ctx.bezierCurveTo(x-12,70,x+14,170,x+(i%2?5:-8),h);ctx.stroke();}
+    for(let i=0;i<9;i++){const x=(i*83)%w,y=(i*59)%h;ctx.strokeStyle='#3e291f77';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(x,y,5+(i%3)*2,12+(i%4)*3,.2,0,Math.PI*2);ctx.stroke();}
+  },1,2);
+  bark.map=barkTexture;bark.bumpMap=barkTexture;bark.bumpScale=.09;barkLight.map=barkTexture;barkLight.bumpMap=barkTexture;barkLight.bumpScale=.055;
+  const woodTexture=canvasTexture((ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#d3a36c');g.addColorStop(.5,'#95613d');g.addColorStop(1,'#6b432e');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    for(let i=0;i<36;i++){const y=i*7;ctx.strokeStyle=i%2?'#e6bd8055':'#422b2055';ctx.lineWidth=1+(i%3);ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(80,y-5,150,y+7,w,y-2);ctx.stroke();}
+  },2,1);
+  timber.map=woodTexture;timber.bumpMap=woodTexture;timber.bumpScale=.035;timberLight.map=woodTexture;timberLight.bumpMap=woodTexture;timberLight.bumpScale=.025;
+
 
   scene.add(new THREE.HemisphereLight('#f6e7c9', '#314c38', 2.0));
   const sun = new THREE.DirectionalLight('#ffe1ae', 3.1);
@@ -192,7 +212,14 @@ const mountCanopy = () => {
   canopyLeafShape.bezierCurveTo(-0.13,0.16,-0.18,0.42,0,0.68);
   canopyLeafShape.bezierCurveTo(0.18,0.42,0.13,0.16,0,0);
   const canopyLeafGeometry = new THREE.ShapeGeometry(canopyLeafShape,5);
-  const canopyLeafMaterials = ['#294f38','#376a43','#527f4c','#78975a','#a1ad69'].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:0.94,side:THREE.DoubleSide}));
+  const leafTexture=canvasTexture((ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,h,0,0);g.addColorStop(0,'#244b34');g.addColorStop(.48,'#6f9858');g.addColorStop(1,'#c4c77d');
+    ctx.fillStyle=g;ctx.beginPath();ctx.moveTo(w/2,h-4);ctx.bezierCurveTo(7,h*.58,12,h*.2,w/2,4);ctx.bezierCurveTo(w-12,h*.2,w-7,h*.58,w/2,h-4);ctx.fill();
+    ctx.strokeStyle='#e0d99a99';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(w/2,h-8);ctx.lineTo(w/2,8);ctx.stroke();
+    for(let i=1;i<7;i++){const y=h-i*h/8;ctx.beginPath();ctx.moveTo(w/2,y);ctx.quadraticCurveTo(w*.27,y-13,w*.16,y-26);ctx.moveTo(w/2,y);ctx.quadraticCurveTo(w*.73,y-13,w*.84,y-26);ctx.stroke();}
+    for(let i=0;i<34;i++){ctx.fillStyle=i%2?'#fff1bd55':'#193e2b55';ctx.beginPath();ctx.arc((i*37)%w,(i*61)%h,1+(i%3),0,Math.PI*2);ctx.fill();}
+  });
+  const canopyLeafMaterials = ['#294f38','#376a43','#527f4c','#78975a','#a1ad69'].map(c=>new THREE.MeshStandardMaterial({color:c,map:leafTexture,roughness:0.94,side:THREE.DoubleSide}));
   function makeTree(x,z,scale=1,kind=0) {
     const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(scale);scene.add(g);
     cylinder(g,0,1.42,0,0.17,0.31,2.84,bark,11);
