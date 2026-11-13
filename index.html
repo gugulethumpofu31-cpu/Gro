@@ -553,6 +553,45 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
 .biome-banga.expression-thinking .banga-fairy-wings{animation-duration:.42s}
 .biome-banga.expression-sleeping .banga-fairy-wings{animation:none;opacity:.45}
 .biome-banga.expression-sleeping .banga-fairy-body{animation:none}
+
+/* Canopy art-direction pass: quieter navigation, clearer focal architecture */
+.biome-career .career-3d-world{
+ background:radial-gradient(ellipse at 50% 30%,#c8d5ad 0%,#9db58c 54%,#6f8b67 100%);
+}
+.biome-career .career-hotspots{z-index:13}
+.biome-career .career-hotspot{
+ padding:8px 12px;
+ border:1px solid #d8bc78cc;
+ border-radius:22px;
+ background:linear-gradient(145deg,#153c2ee8,#245b43e8);
+ color:#fff1cb;
+ font-size:11px;
+ letter-spacing:.1px;
+ box-shadow:0 7px 15px #102b2180,inset 0 1px #fff5;
+ backdrop-filter:blur(5px);
+}
+.biome-career .career-hotspot span{font-size:14px}
+.biome-career .career-hotspot.knowledge{left:9%;top:25%}
+.biome-career .career-hotspot.strategy{right:15%;top:24%}
+.biome-career .career-hotspot.desk{left:49%;top:55%}
+.biome-career .career-hotspot.horizon{right:3%;top:43%}
+.biome-career .career-hotspot.meeting{left:69%;top:70%}
+.biome-career .biome-banga{left:16%;top:53%;transform:scale(1.12);transform-origin:bottom center}
+.biome-career .biome-actions{left:58%;bottom:17px;gap:8px}
+.biome-career .biome-actions button{background:#f5f0dfeb;color:#3b5145;border:1px solid #ffffffaa;box-shadow:0 5px 14px #172c2566}
+.biome-career .place-entry{left:19%;bottom:18px}
+.biome-career .career-camera-controls{background:#163b2be8;border:1px solid #d8bd7a;backdrop-filter:blur(7px)}
+@media(max-width:700px){
+ .biome-career .career-hotspot{font-size:9px;padding:6px 8px;gap:5px}
+ .biome-career .career-hotspot.knowledge{left:2%;top:22%}
+ .biome-career .career-hotspot.strategy{right:2%;top:22%}
+ .biome-career .career-hotspot.desk{left:38%;top:49%}
+ .biome-career .career-hotspot.horizon{right:1%;top:39%}
+ .biome-career .career-hotspot.meeting{left:58%;top:66%}
+ .biome-career .biome-banga{left:3%;top:53%;transform:scale(.86);transform-origin:bottom left}
+ .biome-career .place-entry{left:23%;bottom:12px}
+ .biome-career .biome-actions{left:67%;bottom:12px}
+}
 </style><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
