@@ -214,6 +214,49 @@ const mountCanopy = () => {
   }
   cylinder(pavilion,0,4.05,0,0.075,0.12,0.45,gold,8);
 
+
+  // Ancient mother-tree and elevated treehouse architecture.
+  const motherTree=new THREE.Group();motherTree.position.set(-3.35,0,-.15);scene.add(motherTree);
+  const heartwood=mat('#563722'),barkRidge=mat('#91613d');
+  cylinder(motherTree,0,3.55,0,1.02,1.28,7.1,heartwood,24);
+  for(let i=0;i<10;i++){
+    const a=i*Math.PI/5;
+    const rootCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(Math.cos(a)*.3,.55,Math.sin(a)*.3),new THREE.Vector3(Math.cos(a)*1.05,.22,Math.sin(a)*1.05),new THREE.Vector3(Math.cos(a)*1.6,.08,Math.sin(a)*1.6)]);
+    add(new THREE.Mesh(new THREE.TubeGeometry(rootCurve,18,.16,8,false),barkRidge),motherTree);
+    const branchCurve=new THREE.CatmullRomCurve3([new THREE.Vector3(0,4.6,0),new THREE.Vector3(Math.cos(a)*.8,5.3,Math.sin(a)*.8),new THREE.Vector3(Math.cos(a)*2.1,6.1,Math.sin(a)*2.1),new THREE.Vector3(Math.cos(a)*3.1,6.6,Math.sin(a)*3.1)]);
+    add(new THREE.Mesh(new THREE.TubeGeometry(branchCurve,28,.22,10,false),barkRidge),motherTree);
+  }
+  // Wraparound timber terrace, individually laid boards and carved balustrade.
+  const terrace=new THREE.Group();terrace.position.set(.15,2.02,.9);scene.add(terrace);
+  const terraceShape=new THREE.Shape();terraceShape.moveTo(-4.5,-1.7);terraceShape.quadraticCurveTo(-4.8,.4,-2.8,1.9);terraceShape.quadraticCurveTo(0,3.0,3.5,1.8);terraceShape.quadraticCurveTo(4.6,.1,4,-1.8);terraceShape.quadraticCurveTo(0,-2.65,-4.5,-1.7);
+  const terraceBase=add(new THREE.Mesh(new THREE.ExtrudeGeometry(terraceShape,{depth:.2,bevelEnabled:true,bevelThickness:.12,bevelSize:.1,bevelSegments:3}),timber),terrace);terraceBase.rotation.x=-Math.PI/2;terraceBase.position.y=.08;
+  for(let i=0;i<36;i++)box(terrace,-4.15+i*.235,.31,-.45,.19,.045,2.9,i%4===0?timber:timberLight);
+  const balustrade=new THREE.CatmullRomCurve3([new THREE.Vector3(-4,.76,-.8),new THREE.Vector3(-3.8,.82,1.35),new THREE.Vector3(-1.8,.85,2.05),new THREE.Vector3(.8,.85,2.1),new THREE.Vector3(3.2,.82,1.45),new THREE.Vector3(4,.72,-.6)]);
+  add(new THREE.Mesh(new THREE.TubeGeometry(balustrade,70,.07,9,false),timberLight),terrace);
+  for(let i=0;i<28;i++){const p=balustrade.getPoint(i/27);cylinder(terrace,p.x,.49,p.z,.04,.05,.48,timberLight,8);sphere(terrace,p.x,.77,p.z,.07,.06,.07,gold);}
+  // Broad timber staircase rises to the terrace.
+  const stairs=new THREE.Group();scene.add(stairs);
+  for(let i=0;i<14;i++){const t=i/13,x=-2.75-t*.45,y=.24+t*1.85,z=3.4-t*3.35;box(stairs,x,y,z,1.5,.13,.39,timber);box(stairs,x,y+.075,z-.03,1.42,.03,.32,timberLight);}
+  // A book-lined study and planning table make the pavilion a working sanctuary.
+  const bookcase=new THREE.Group();bookcase.position.set(-1.0,2.43,-.55);scene.add(bookcase);
+  box(bookcase,0,1.05,0,2.0,2.2,.16,heartwood);
+  for(let row=0;row<4;row++){box(bookcase,0,.35+row*.52,.12,1.95,.07,.32,timberLight);for(let b=0;b<12;b++){const bh=.24+(b%3)*.07;box(bookcase,-.86+b*.155,.4+row*.52+bh/2,.2,.105,bh,.1,['#853d37','#c28c47','#355f4d','#655080'][b%4]);}}
+  const writingDesk=new THREE.Group();writingDesk.position.set(1.0,2.42,-.2);scene.add(writingDesk);
+  box(writingDesk,0,.76,0,1.8,.15,.78,timber);for(const x of [-.76,.76])for(const z of [-.28,.28])box(writingDesk,x,.36,z,.1,.72,.1,timber);
+  box(writingDesk,0,.86,-.15,1.0,.025,.5,mat('#c59a60'));
+  cylinder(writingDesk,.63,1.05,.12,.15,.15,.28,gold,16);sphere(writingDesk,.63,1.22,.12,.16,.16,.16,mat('#55947e'));
+  // Conversation lounge: cushions around a carved circular table.
+  const lounge=new THREE.Group();lounge.position.set(.1,2.42,2.0);scene.add(lounge);
+  cylinder(lounge,0,.38,0,.68,.72,.22,timber,24);cylinder(lounge,0,.51,0,.6,.6,.05,gold,24);
+  for(let i=0;i<10;i++){const a=i*Math.PI/5,seat=box(lounge,Math.cos(a)*1.15,.46,Math.sin(a)*.78,.78,.3,.48,i%2?mat('#9b5147'):mat('#bd8956'));seat.rotation.y=-a;}
+  // Suspended rope bridge, waterfall ribbons and lanterns beyond the terrace.
+  const suspension=new THREE.Group();scene.add(suspension);
+  for(let i=0;i<18;i++){const t=i/17,x=3.1+t*4.1,z=1.25-t*.7,y=2.25+Math.sin(t*Math.PI)*.2;box(suspension,x,y,z,.28,.09,.82,timberLight);}
+  for(const side of [-1,1]){const cable=new THREE.CatmullRomCurve3([new THREE.Vector3(3,3.15,1.25+side*.5),new THREE.Vector3(4.8,2.8,.9+side*.5),new THREE.Vector3(7.25,3.05,.55+side*.5)]);add(new THREE.Mesh(new THREE.TubeGeometry(cable,32,.025,6,false),gold),suspension);}
+  const waterfallMat=new THREE.MeshStandardMaterial({color:'#9ce0df',transparent:true,opacity:.68,roughness:.2,side:THREE.DoubleSide,emissive:'#2d8d91',emissiveIntensity:.2});
+  for(let i=0;i<3;i++){const shape=new THREE.Shape();shape.moveTo(0,0);shape.bezierCurveTo(-.15,-.8,.18,-1.3,0,-2.5);shape.lineTo(.42,-2.5);shape.bezierCurveTo(.25,-1.3,.58,-.7,.42,0);shape.closePath();const fall=add(new THREE.Mesh(new THREE.ShapeGeometry(shape,20),waterfallMat));fall.position.set(7.6+i*.4,4.2,1.8+i*.35);}
+  for(const [x,z] of [[-3.1,-1.1],[2.8,-1.0],[-2.7,1.9],[2.8,1.6]]){cylinder(scene,x,5.65,z,.018,.018,.48,gold,6);sphere(scene,x,5.35,z,.15,.22,.15,mat('#ffe5a2',.3,{emissive:'#efa53f',emissiveIntensity:1.3}));}
+
   // Mature canopy trees: sculpted trunks, branching limbs and individually shaped leaves.
   const canopyLeafShape = new THREE.Shape();
   canopyLeafShape.moveTo(0,0);
