@@ -592,6 +592,24 @@ main{color:#f1eee8}.eyebrow{color:#d6c9a9}h1,h2{color:#fbf1df}.muted{color:#bac5
  .biome-career .place-entry{left:23%;bottom:12px}
  .biome-career .biome-actions{left:67%;bottom:12px}
 }
+
+/* Canopy companion placement: keep Banga fully inside the garden frame */
+.biome-career .biome-banga{
+ left:4%!important;right:auto!important;top:auto!important;bottom:10px!important;
+ width:154px;height:184px;transform:none!important;
+ z-index:22;overflow:visible;
+}
+.biome-career .biome-banga .banga-fairy-body{width:142px;height:174px;left:0;top:0}
+.biome-career .biome-banga .banga-name{top:158px;left:49px}
+.biome-career .place-entry{left:22%;bottom:17px;z-index:20}
+.biome-career .biome-actions{left:68%;bottom:17px;z-index:20}
+@media(max-width:700px){
+ .biome-career .biome-banga{left:2%!important;bottom:9px!important;width:118px;height:146px}
+ .biome-career .biome-banga .banga-fairy-body{width:112px;height:137px}
+ .biome-career .biome-banga .banga-name{top:126px;left:38px}
+ .biome-career .place-entry{left:25%;bottom:12px}
+ .biome-career .biome-actions{left:68%;bottom:12px}
+}
 </style><script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script></head><body><div class="shell" id="shell"><aside class="sidebar"><div><div class="brand">GRO</div><div class="tag">Cultivate the life you want to live.</div></div><button class="nav active" data-page="garden">✿ Garden</button><button class="nav" data-page="planner">▦ Planner</button><button class="nav" data-page="growth">✧ Growth</button><button class="nav" data-page="seeds">❧ Seed Bank</button><button class="nav" data-page="journal">✧ Journal</button><button class="nav" data-page="settings">⚙ Settings</button><div class="bottom">A little progress is still growth.<br>Made for your seasons.</div></aside><main><div class="top"><span class="eyebrow" id="today"></span><span class="pill" id="clock"></span></div><section id="page"></section><div class="footer">GRO 0.4 · Individual life gardens Export your data regularly.</div></main></div>
 <dialog id="modal"><form id="taskForm"><h2>Plant a little intention 🌱</h2><label class="field">What needs tending?<input id="taskTitle" maxlength="180" required placeholder="e.g. Read maritime law unit 2"></label><label class="field">Garden plot<select id="taskPlot"></select></label><label class="field">Due date<input id="taskDate" type="date"></label><div class="track-box"><label class="step"><input type="checkbox" id="enableTracking"><strong>Enable Progress Layer</strong></label><div class="muted">Track how far along you are, not just whether it is finished.</div><div id="trackingOptions" class="hidden"><label class="field">Tracking method<select id="trackingMethod"><option value="percent">Percentage</option><option value="steps">Subtasks</option><option value="milestones">Milestones</option></select></label><label class="field" id="stepsField">Steps or milestones, one per line<textarea id="taskSteps" rows="4" placeholder="Research
 Analyse
