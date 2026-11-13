@@ -69,6 +69,13 @@ const mountCanopy = () => {
     for(let i=0;i<9;i++){const x=(i*83)%w,y=(i*59)%h;ctx.strokeStyle='#3e291f77';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(x,y,5+(i%3)*2,12+(i%4)*3,.2,0,Math.PI*2);ctx.stroke();}
   },1,2);
   bark.map=barkTexture;bark.bumpMap=barkTexture;bark.bumpScale=.09;barkLight.map=barkTexture;barkLight.bumpMap=barkTexture;barkLight.bumpScale=.055;
+  const groundTexture=canvasTexture((ctx,w,h)=>{
+    const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#8b9d5d');g.addColorStop(.45,'#789451');g.addColorStop(1,'#a8ad70');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    for(let i=0;i<1050;i++){const x=(i*73)%w,y=(i*137)%h;ctx.fillStyle=i%4===0?'#d0c98755':i%3===0?'#345c3c55':'#e0d49a33';ctx.beginPath();ctx.ellipse(x,y,1+(i%3),2+(i%5),((i%7)-3)*.18,0,Math.PI*2);ctx.fill();}
+    for(let i=0;i<110;i++){const x=(i*97)%w,y=(i*53)%h;ctx.strokeStyle=i%2?'#365d3d88':'#d4d18a88';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(x,y+5);ctx.quadraticCurveTo(x-3,y,x+((i%5)-2)*2,y-5);ctx.stroke();}
+  },3,3);
+  grass.map=groundTexture;grass.bumpMap=groundTexture;grass.bumpScale=.045;
+
   const woodTexture=canvasTexture((ctx,w,h)=>{
     const g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#d3a36c');g.addColorStop(.5,'#95613d');g.addColorStop(1,'#6b432e');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
     for(let i=0;i<36;i++){const y=i*7;ctx.strokeStyle=i%2?'#e6bd8055':'#422b2055';ctx.lineWidth=1+(i%3);ctx.beginPath();ctx.moveTo(0,y);ctx.bezierCurveTo(80,y-5,150,y+7,w,y-2);ctx.stroke();}
@@ -198,6 +205,7 @@ const mountCanopy = () => {
   const roofGeo = new THREE.ExtrudeGeometry(roofShape,{depth:2.65,bevelEnabled:true,bevelThickness:0.07,bevelSize:0.05,bevelSegments:2});
   const roof = add(new THREE.Mesh(roofGeo,roofMat),roofGroup);
   roof.rotation.x = 0; roof.position.set(0,2.45,-1.32);
+  roofGroup.scale.set(0.88,0.88,0.9);
   // Shingle ribs give the roof its hand-built texture.
   for(let i=0;i<11;i++){
     const x=-2.0+i*0.4;
@@ -219,7 +227,7 @@ const mountCanopy = () => {
     for(let i=1;i<7;i++){const y=h-i*h/8;ctx.beginPath();ctx.moveTo(w/2,y);ctx.quadraticCurveTo(w*.27,y-13,w*.16,y-26);ctx.moveTo(w/2,y);ctx.quadraticCurveTo(w*.73,y-13,w*.84,y-26);ctx.stroke();}
     for(let i=0;i<34;i++){ctx.fillStyle=i%2?'#fff1bd55':'#193e2b55';ctx.beginPath();ctx.arc((i*37)%w,(i*61)%h,1+(i%3),0,Math.PI*2);ctx.fill();}
   });
-  const canopyLeafMaterials = ['#294f38','#376a43','#527f4c','#78975a','#a1ad69'].map(c=>new THREE.MeshStandardMaterial({color:c,map:leafTexture,roughness:0.94,side:THREE.DoubleSide}));
+  const canopyLeafMaterials = ['#547b43','#71964d','#87a95b','#a0b56b','#c0c27b'].map((c,i)=>new THREE.MeshStandardMaterial({color:c,map:leafTexture,roughness:0.94,side:THREE.DoubleSide,emissive:new THREE.Color(i%2?'#253d1b':'#314522'),emissiveIntensity:.12}));
   function makeTree(x,z,scale=1,kind=0) {
     const g=new THREE.Group();g.position.set(x,0,z);g.scale.setScalar(scale);scene.add(g);
     cylinder(g,0,1.42,0,0.17,0.31,2.84,bark,11);
@@ -237,8 +245,15 @@ const mountCanopy = () => {
       const curve=new THREE.QuadraticBezierCurve3(start,mid,end);
       add(new THREE.Mesh(new THREE.TubeGeometry(curve,12,.055,7,false),barkLight),g);
     }
-    // A loose, irregular crown of leaves. Each leaf is real geometry, not a smooth ball.
-    for(let i=0;i<126;i++){
+    // Soft, overlapping foliage masses create a broad, rounded canopy silhouette.
+    const crownMats=['#527746','#658a4b','#789753','#8da35d'].map((c,i)=>new THREE.MeshStandardMaterial({color:c,roughness:1,emissive:'#263b1d',emissiveIntensity:.09}));
+    for(let i=0;i<8;i++){
+      const a=i*Math.PI/4+kind*.31,rad=.48+(i%3)*.09;
+      const mass=sphere(g,Math.cos(a)*rad,3.12+Math.sin(i*2.1)*.24,Math.sin(a)*rad,.72+(i%2)*.12,.48+(i%3)*.05,.66+(i%2)*.1,crownMats[i%4]);
+      mass.rotation.y=a*.7;mass.castShadow=true;
+    }
+    // A loose, irregular crown of individual leaves layered over the foliage masses.
+    for(let i=0;i<104;i++){
       const u=((i*37+kind*19)%127)/127;
       const v=((i*53+kind*11)%131)/131;
       const theta=u*Math.PI*2;
@@ -250,18 +265,18 @@ const mountCanopy = () => {
       const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+kind)%canopyLeafMaterials.length]);
       leaf.position.set(crownX,crownY,crownZ);
       leaf.rotation.set((i%7-3)*.24,theta+(i%5)*.3,(i%9-4)*.19);
-      const size=.72+((i*17)%9)*.055;
-      leaf.scale.set(size,size*(.82+((i*3)%5)*.06),size);
+      const size=.88+((i*17)%9)*.065;
+      leaf.scale.set(size*1.08,size*(.92+((i*3)%5)*.06),size*1.08);
       leaf.castShadow=false;leaf.receiveShadow=false;g.add(leaf);
     }
     // Smaller fresh growth catches the light along the outside of the crown.
-    for(let i=0;i<28;i++){
+    for(let i=0;i<38;i++){
       const a=i*2.399+kind;
       const y=2.8+(i%7)*.19;
       const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+2)%canopyLeafMaterials.length]);
       leaf.position.set(Math.cos(a)*(.78+(i%3)*.08),y,Math.sin(a)*(.78+(i%3)*.08));
       leaf.rotation.set(.25*Math.sin(a),a,.35*Math.cos(a));
-      leaf.scale.setScalar(.72);leaf.castShadow=false;g.add(leaf);
+      leaf.scale.setScalar(.86);leaf.castShadow=false;g.add(leaf);
     }
     return g;
   }
