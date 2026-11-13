@@ -245,38 +245,34 @@ const mountCanopy = () => {
       const curve=new THREE.QuadraticBezierCurve3(start,mid,end);
       add(new THREE.Mesh(new THREE.TubeGeometry(curve,12,.055,7,false),barkLight),g);
     }
-    // Soft, overlapping foliage masses create a broad, rounded canopy silhouette.
-    const crownMats=['#527746','#658a4b','#789753','#8da35d'].map((c,i)=>new THREE.MeshStandardMaterial({color:c,roughness:1,emissive:'#263b1d',emissiveIntensity:.09}));
-    for(let i=0;i<8;i++){
-      const a=i*Math.PI/4+kind*.31,rad=.48+(i%3)*.09;
-      const mass=sphere(g,Math.cos(a)*rad,3.12+Math.sin(i*2.1)*.24,Math.sin(a)*rad,.72+(i%2)*.12,.48+(i%3)*.05,.66+(i%2)*.1,crownMats[i%4]);
-      mass.rotation.y=a*.7;mass.castShadow=true;
-    }
-    // A loose, irregular crown of individual leaves layered over the foliage masses.
-    for(let i=0;i<104;i++){
-      const u=((i*37+kind*19)%127)/127;
-      const v=((i*53+kind*11)%131)/131;
-      const theta=u*Math.PI*2;
-      const vertical=(v-.5)*2;
-      const radial=Math.sqrt(Math.max(.04,1-vertical*vertical));
-      const crownX=Math.cos(theta)*(.62+((i*7)%13)*.018)*radial;
-      const crownZ=Math.sin(theta)*(.62+((i*11)%13)*.018)*radial;
-      const crownY=3.15+vertical*.78;
-      const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+kind)%canopyLeafMaterials.length]);
-      leaf.position.set(crownX,crownY,crownZ);
-      leaf.rotation.set((i%7-3)*.24,theta+(i%5)*.3,(i%9-4)*.19);
-      const size=.88+((i*17)%9)*.065;
-      leaf.scale.set(size*1.08,size*(.92+((i*3)%5)*.06),size*1.08);
-      leaf.castShadow=false;leaf.receiveShadow=false;g.add(leaf);
-    }
-    // Smaller fresh growth catches the light along the outside of the crown.
-    for(let i=0;i<38;i++){
-      const a=i*2.399+kind;
-      const y=2.8+(i%7)*.19;
-      const leaf=new THREE.Mesh(canopyLeafGeometry,canopyLeafMaterials[(i+2)%canopyLeafMaterials.length]);
-      leaf.position.set(Math.cos(a)*(.78+(i%3)*.08),y,Math.sin(a)*(.78+(i%3)*.08));
-      leaf.rotation.set(.25*Math.sin(a),a,.35*Math.cos(a));
-      leaf.scale.setScalar(.86);leaf.castShadow=false;g.add(leaf);
+
+    // Broad, layered botanical crowns. Avoid needle-like leaf planes and hard spherical clumps.
+    const crownPalette=['#496d43','#587b49','#668650','#789457','#8a9d61','#9eaa6d'].map(c=>
+      new THREE.MeshStandardMaterial({color:c,roughness:1,flatShading:true})
+    );
+    const lobes=[
+      [-.48,3.08,-.10,.72,.48,.63],[-.18,3.38,.38,.72,.46,.62],
+      [.38,3.18,.34,.78,.5,.66],[.52,3.02,-.28,.70,.47,.63],
+      [.08,3.48,-.42,.73,.48,.64],[-.42,3.42,-.42,.62,.43,.58],
+      [.02,3.03,.02,.78,.49,.7]
+    ];
+    lobes.forEach((v,i)=>{
+      const crownLobe=new THREE.Mesh(new THREE.IcosahedronGeometry(1,2),crownPalette[(i+kind)%crownPalette.length]);
+      crownLobe.position.set(v[0],v[1],v[2]);crownLobe.scale.set(v[3],v[4],v[5]);
+      crownLobe.rotation.set(i*.13,i*.61,i*.09);crownLobe.castShadow=true;crownLobe.receiveShadow=true;g.add(crownLobe);
+    });
+    // Individual rounded leaves sit in overlapping sprays along the crown edge.
+    const leafletGeo=new THREE.SphereGeometry(1,10,7);
+    const leafletMats=['#63834c','#789653','#8da260','#a2ad70'].map(c=>new THREE.MeshStandardMaterial({color:c,roughness:1,flatShading:true}));
+    for(let i=0;i<76;i++){
+      const a=i*2.39996+kind*.47;
+      const ring=.55+((i*13)%19)/42;
+      const y=2.92+((i*17)%23)/22;
+      const leaflet=new THREE.Mesh(leafletGeo,leafletMats[i%leafletMats.length]);
+      leaflet.position.set(Math.cos(a)*ring,y,Math.sin(a)*ring);
+      leaflet.scale.set(.19+((i*7)%5)*.018,.065,.115+((i*11)%4)*.018);
+      leaflet.rotation.set(.18*Math.sin(a),a,.22*Math.cos(a));
+      leaflet.castShadow=false;leaflet.receiveShadow=false;g.add(leaflet);
     }
     return g;
   }
@@ -335,16 +331,7 @@ const mountCanopy = () => {
     mesh.rotation.set(rotation[0],rotation[1],rotation[2]);
     leafMeshes.push(mesh);return mesh;
   }
-  // Irregular sprays soften the silhouette of each mature tree.
-  for(const [tx,tz,scale] of [[-6,1.8,.88],[6,1.8,.92],[-5.7,-2.4,.62],[5.7,-2.45,.66],[-4.1,3.15,.48],[4.2,3.15,.5]]){
-    for(let i=0;i<62;i++){
-      const a=i*2.39996, radial=0.55+((i*17)%23)/30;
-      const x=tx+Math.cos(a)*radial*scale;
-      const y=(3.1+Math.sin(i*1.7)*.65)*scale;
-      const z=tz+Math.sin(a)*radial*scale;
-      botanicalLeaf(scene,x,y,z,0.25+((i*7)%9)*.03,[Math.sin(a)*.5,a,Math.cos(a)*.7],leafPalette[i%leafPalette.length]);
-    }
-  }
+  // Tree crowns are built within each tree group to preserve natural proportions and depth.
   // Low, varied ground-cover beds, rather than a uniformly empty grass slab.
   for(let i=0;i<210;i++){
     const a=i*2.399963,r=1.7+Math.sqrt(i/210)*5.4;
