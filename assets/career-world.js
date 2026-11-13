@@ -9,8 +9,8 @@ const mountCanopy = () => {
   if (window.GROCanopyCleanup) window.GROCanopyCleanup();
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#a8bca0');
-  scene.fog = new THREE.Fog('#a8bca0', 18, 38);
+  scene.background = new THREE.Color('#c4d0b0');
+  scene.fog = new THREE.Fog('#c4d0b0', 19, 40);
 
   const camera = new THREE.OrthographicCamera(-10, 10, 7.2, -7.2, 0.1, 100);
   camera.position.set(12, 13, 14);
@@ -83,8 +83,8 @@ const mountCanopy = () => {
   timber.map=woodTexture;timber.bumpMap=woodTexture;timber.bumpScale=.035;timberLight.map=woodTexture;timberLight.bumpMap=woodTexture;timberLight.bumpScale=.025;
 
 
-  scene.add(new THREE.HemisphereLight('#f6e7c9', '#314c38', 2.0));
-  const sun = new THREE.DirectionalLight('#ffe1ae', 3.1);
+  scene.add(new THREE.HemisphereLight('#fff1d3', '#496b43', 2.35));
+  const sun = new THREE.DirectionalLight('#ffe5b7', 2.65);
   sun.position.set(-8, 14, 7);
   sun.castShadow = true;
   sun.shadow.mapSize.set(2048, 2048);
@@ -440,7 +440,7 @@ const mountCanopy = () => {
 
   function resize(){
     const w=Math.max(1,sceneHost.clientWidth),h=Math.max(1,sceneHost.clientHeight);
-    const aspect=w/h,view=8.6;
+    const aspect=w/h,view=9.5;
     camera.left=-view*aspect/2;camera.right=view*aspect/2;
     camera.top=view/2;camera.bottom=-view/2;camera.updateProjectionMatrix();
     renderer.setSize(w,h,false);
