@@ -27,7 +27,7 @@ const mountCanopy = () => {
   sceneHost.appendChild(renderer.domElement);
 
   const controls = new OrbitControls(camera, renderer.domElement);
-  controls.target.set(0, 1.4, 0);
+  controls.target.set(0, 2.25, 0);
   controls.enableDamping = true;
   controls.dampingFactor = 0.065;
   controls.enablePan = false;
@@ -180,6 +180,7 @@ const mountCanopy = () => {
     }
   }
 
+  bridge.visible = false;
   // Pavilion: platform, posts, braces, open arch and a four-sided timber roof.
   const pavilion = new THREE.Group();
   pavilion.position.set(0.5, 0.42, 1.05);
